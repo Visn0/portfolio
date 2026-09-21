@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Project deck — Anton Chernysh, Site Reliability Engineer</title>
-<meta name="description" content="Ten slides on reliability engineering and four projects: a Rust/WebAssembly protein analyser, KV-cache compression for vLLM, an agent-driven cloud-lab simulation and a seasonal meal planner.">
+<meta name="description" content="Eight slides on reliability engineering and seven repositories: a Rust and WebAssembly protein analyser, a Go chess server built on a domain model, five path-finding algorithms, a Z80 assembly game, and the numbers behind six years in production.">
 <meta name="author" content="Anton Chernysh Kornishuk">
 <link rel="canonical" href="https://visn0.github.io/portfolio/presentation.html">
 <meta property="og:type" content="article">
@@ -63,7 +63,7 @@
         <div><b>4×</b>throughput after PHP → Go</div>
         <div><b>24/7</b>on-call, regulated finance</div>
       </div>
-      <p>Caffeine.ai built and scaled on a decentralised network; Terraform, Kubernetes and Helmfiles for crypto infrastructure at Taurus; AI-driven pre-caching and an MFA framework that cut fraud at Webbeds.</p>
+      <p>Caffeine.ai built and scaled in the cloud at DFINITY; Terraform, Kubernetes and Helmfiles for regulated financial infrastructure at Taurus; AI-driven pre-caching and an MFA framework that cut fraud at Webbeds.</p>
     </section>
 
     <!-- 4 -->
@@ -98,54 +98,23 @@
 
     <!-- 6 -->
     <section class="slide">
-      <p class="slide-kicker">04 — Applied research</p>
-      <h2>TurboQuant: half the KV cache, no slower</h2>
-      <p>Implementing TurboQuant (ICLR 2026) inside vLLM: 3-bit keys, 2-bit values, a full-precision ring buffer for recent tokens, and only the full-attention layers compressed.</p>
-      <div class="stat-strip">
-        <div><b>30.9 %</b>KV memory saved per GPU</div>
-        <div><b>914,144</b>max tokens, up from 457,072</div>
-        <div><b>+3.1 %</b>decode tok/s at 30k context</div>
-        <div><b>+5.7 %</b>prefill tok/s at 30k context</div>
-        <div><b>8 × 3090</b>and one 5090, measured</div>
-      </div>
-      <p>The interesting part was not the compression — it was updating memory accounting and the context-limit calculation so the scheduler stops over-committing the VRAM it thinks it still has.</p>
-    </section>
-
-    <!-- 7 -->
-    <section class="slide">
-      <p class="slide-kicker">05 — Platform simulation</p>
-      <h2>A cloud lab in one command</h2>
-      <pre class="mono" style="font-size: clamp(0.5rem, 0.85vw, 0.95rem); line-height: 1.5; background: var(--bg-elev-2); border: 1px solid var(--line); border-radius: 3px; padding: 0.9rem; overflow-x: auto; color: var(--ink-dim);">frontend (Next.js) ─► service (mock Foundry API + MCP) ─► db (Postgres)
-   submit / poll          │  on submit: enqueue              ▲
-                          └─► redis ─► worker (arq) ─────────┘
-opencode-agent ─ designs a binder, submits, reads results, hunts bugs — over MCP</pre>
+      <p class="slide-kicker">03 — The repositories</p>
+      <h2>Seven repositories, and the range they cover</h2>
       <div class="slide-cols">
         <ul>
-          <li><strong>demo mode:</strong> the agent designs a binder and drives the loop end to end.</li>
-          <li><strong>evaluate mode:</strong> the agent beta-tests the API's AI-readiness and ends with a PASS/FAIL verdict.</li>
+          <li><strong>Protein with Rust</strong> — Rust → WebAssembly, fetched live, 3D structure · 2026</li>
+          <li><strong>GoChess</strong> — Go and Vue behind a domain model, over WebSockets · 2023</li>
+          <li><strong>Path Finding Visualizer</strong> — five search algorithms in TypeScript · 2021</li>
+          <li><strong>goBinance</strong> — Go, live market-data streams, arbitrage maths · 2021</li>
         </ul>
         <ul>
-          <li>Three CI workflows, all commenting on the PR: unit tests, AI code review, AI beta tester.</li>
-          <li>MCP tools mirror the vendor SDK, so an agent that knows the real API transfers 1:1.</li>
+          <li><strong>UniversityHack 2021</strong> — Python, sales forecasting scored on stock-outs · 2021</li>
+          <li><strong>NN from scratch</strong> — C++, backpropagation and an Atari agent · 2021</li>
+          <li><strong>Cell Block</strong> — a Z80 assembly game for the Amstrad CPC · 2020</li>
+          <li>Everything else lives at github.com/Visn0</li>
         </ul>
       </div>
-    </section>
-
-    <!-- 8 -->
-    <section class="slide">
-      <p class="slide-kicker">06 — Small tool, weekly use</p>
-      <h2>Meal planning from the winter larder</h2>
-      <div class="slide-cols">
-        <ul>
-          <li>Daily caloric needs from a personal profile — age, sex, weight, height, activity.</li>
-          <li>Balanced weekly plans from a curated Swiss winter ingredient database with macro ranges.</li>
-        </ul>
-        <ul>
-          <li>One consolidated shopping list for the week.</li>
-          <li>Optional FLUX.1-schnell meal images; no token, feature quietly off, app still fine.</li>
-          <li>Flask, Python, a config surface — my smallest full end-to-end service.</li>
-        </ul>
-      </div>
+      <p>The point is the spread rather than the count: an assembly game, a datathon notebook, a Go domain model, a C++ neural network and a Rust tool that runs in a browser. Each one has its last-commit date on the portfolio, because a repository that stopped two years ago should say so.</p>
     </section>
 
     <!-- 9 -->
@@ -183,18 +152,16 @@ opencode-agent ─ designs a binder, submits, reads results, hunts bugs — over
   <p data-note hidden><b>Slide 3 — outcomes</b>30 % off mean time to detect at DFINITY through observability; 60 % fewer tickets from automated review and internal AI workflows; 6 billion requests a day at Webbeds after moving PHP to Go for 4× throughput. Pick the one closest to the role and go deep on it.</p>
   <p data-note hidden><b>Slide 4 — video</b>Let it play: identifier in, UniProt record back, analysis in WebAssembly, 3D cartoon drawn. Point out that nothing is bundled or faked — every record is fetched live. If time is short, skip to slide 5 after ten seconds.</p>
   <p data-note hidden><b>Slide 5 — how it is built</b>The architectural point is the split: TypeScript does the network, Rust does the thinking. Then the deployment story — one Worker, CI that reads the live URL back and compares the wasm binary against what it uploaded.</p>
-  <p data-note hidden><b>Slide 6 — TurboQuant</b>Real hardware, real numbers: 30.9 % KV memory saved with 3-bit keys and 2-bit values, max context doubled to 914k tokens, decode slightly faster rather than slower. The hard part was memory accounting, not the maths.</p>
-  <p data-note hidden><b>Slide 7 — cloud lab</b>This is about agents and CI, not biology: a foundry API simulated faithfully enough that an agent can do the job over MCP, and the same interface used to evaluate whether the API is AI-ready. Three CI workflows, all posting to the PR.</p>
-  <p data-note hidden><b>Slide 8 — meal planner</b>Say it plainly: small app, used weekly, useful because it is honest about a missing API token. Shows end-to-end delivery at a smaller scale.</p>
-  <p data-note hidden><b>Slide 9 — how I work</b>These are the values, said once, without decoration. The second rule is the one that tends to land: boring-looking failures are the expensive ones.</p>
-  <p data-note hidden><b>Slide 10 — contact</b>Leave this up. LinkedIn is the fastest route; the portfolio links the CV, the write-ups and the recording.</p>
+  <p data-note hidden><b>Slide 6 — the repositories</b>Pick two and go deep rather than listing all seven: the Z80 game if the role values fundamentals, the Go domain model if it is a product team, the Rust tool if it is platform work. Be straight that the dates are old on the university work — they are supposed to be.</p>
+  <p data-note hidden><b>Slide 7 — how I work</b>These are the values, said once, without decoration. The second rule is the one that tends to land: boring-looking failures are the expensive ones.</p>
+  <p data-note hidden><b>Slide 8 — contact</b>Leave this up. LinkedIn is the fastest route; the portfolio links the CV, the write-ups and the recording.</p>
 </div>
 
 <div class="deck-bar">
   <a class="mono" href="index.html" style="text-decoration:none;">← Portfolio</a>
   <button class="btn" id="deck-prev" type="button" aria-label="Previous slide">Prev</button>
   <button class="btn" id="deck-next" type="button" aria-label="Next slide">Next</button>
-  <span class="mono" id="deck-counter">01 / 10</span>
+  <span class="mono" id="deck-counter">01 / 08</span>
   <div class="deck-progress" aria-hidden="true"><span id="deck-progress"></span></div>
   <button class="btn" id="deck-notes-toggle" type="button" aria-expanded="false" title="Speaker notes (N)">Notes</button>
   <span class="mono" style="color: var(--ink-faint);">← → · F fullscreen · P print</span>

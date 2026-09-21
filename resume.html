@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -85,7 +85,8 @@
 
     <h2>Summary</h2>
     <p style="color: var(--ink-dim)">
-      Reliability engineer with six years in production systems across decentralised compute, regulated
+      Reliability engineer with six years in production systems across cloud platforms,
+    regulated
       financial infrastructure and high-volume travel traffic. I define SLOs and error budgets, instrument
       what matters, remove toil with automation, and run incident response. Comfortable from Linux and
       Kubernetes up into Go, Rust and Python.
@@ -105,7 +106,7 @@
       <div>
         <h3>Site Reliability Engineer</h3>
         <ul>
-          <li>Built and scaled caffeine.ai, an AI-driven platform for deploying full-stack applications on a decentralised network.</li>
+          <li>Built and scaled caffeine.ai, an AI-driven platform for building and deploying full-stack applications in the cloud.</li>
           <li>Established monitoring, SLOs and error budgets, reducing MTTD by 30 % through enhanced observability; lead incident response via postmortems.</li>
           <li>Managed cloud infrastructure with Pulumi and Kubernetes; reduced toil through automated code review, SRE agents and internal AI workflows, cutting tickets by 60 %.</li>
         </ul>
@@ -169,29 +170,47 @@
     <h2>Selected projects</h2>
 
     <div class="cv-line">
-      <div class="cv-meta"><b>A protein analyser in the browser</b>2025 – 2026<br>Rust · WebAssembly</div>
+      <div class="cv-meta"><b>Protein with Rust</b>2025 – 2026<br>Rust · WebAssembly<br>private repo</div>
       <div>
         <ul>
-          <li>A protein analyser running entirely in the browser: live UniProt, Ensembl and RCSB PDB records, analysis compiled from Rust to WebAssembly, an interactive 3D structure view with a CPU rasteriser when WebGL is unavailable.</li>
-          <li>No backend on the critical path; deployed as a single Cloudflare Worker with CI that verifies the live deployment after each push.</li>
+          <li>A protein explorer that runs entirely in the browser: live UniProt and Ensembl records, analysis compiled from Rust to WebAssembly, an interactive 3D structure view with a CPU rasteriser for browsers without WebGL.</li>
+          <li>TypeScript does the network, Rust does the computation, and there is no backend on the critical path; verified by headless Node checks and a Playwright end-to-end suite.</li>
         </ul>
       </div>
     </div>
 
     <div class="cv-line">
-      <div class="cv-meta"><b>TurboQuant</b>2026<br>vLLM · CUDA · Python</div>
+      <div class="cv-meta"><b>GoChess</b>2023<br>Go · Vue · WebSockets<br>github.com/Visn0/goChess</div>
       <div>
         <ul>
-          <li>Implemented TurboQuant KV-cache compression (ICLR 2026, arXiv:2504.19874) on vLLM and benchmarked it on dense and MoE models: 30.9 % KV memory saved per GPU, maximum context doubled to 914,144 tokens, decode throughput up 3.1 % at 30k context.</li>
+          <li>Multiplayer chess server and client built to practise domain-driven design: move validation and check detection in a hexagonal Go domain layer behind WebSockets, with a Vue 3 board.</li>
         </ul>
       </div>
     </div>
 
     <div class="cv-line">
-      <div class="cv-meta"><b>A cloud-lab simulation</b>2026<br>FastAPI · MCP · CI</div>
+      <div class="cv-meta"><b>Cell Block</b>2020<br>Z80 assembly · CPCtelera<br>github.com/Visn0/c19retro_z80</div>
       <div>
         <ul>
-          <li>A docker-compose simulation of a protein-design foundry API, driven end to end by an AI agent over MCP — including an “AI beta tester” CI workflow that evaluates how usable the API is for agents.</li>
+          <li>A maze-and-enemies game for the Amstrad CPC written in Z80 assembly and released as a bootable tape image — hand-written sprites, tile maps, collision and a fixed-timestep loop on a 4 MHz machine. Four-person team; code and graphics mine.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cv-line">
+      <div class="cv-meta"><b>Path Finding Visualizer</b>2021<br>TypeScript<br>github.com/Visn0/pathfinding-ui</div>
+      <div>
+        <ul>
+          <li>Five search algorithms written from scratch — A*, backtracking, branch and bound, randomised BFS and DFS — with two maze generators in an animated canvas UI.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cv-line">
+      <div class="cv-meta"><b>NN from scratch</b>2021<br>C++<br>github.com/Visn0/NN_from_scratch</div>
+      <div>
+        <ul>
+          <li>A neural network written without a framework — layers, backpropagation and an agent that learns to play Atari through the Arcade Learning Environment.</li>
         </ul>
       </div>
     </div>
@@ -211,7 +230,7 @@
       <div class="cv-meta"><b>Competitions</b>2014 – 2021</div>
       <div>
         <ul>
-          <li>Finalist, UniversityHack 2021 (sales prediction); 1st place, DesafioRobot 2016 and 2017.</li>
+          <li>First prize, Global Management Challenge; finalist, UniversityHack 2021 (sales prediction); 1st place, Desafío Robot 2016 and 2017.</li>
           <li>1st place, local Mathematics Olympiad 2014 and 2016; 4th place, Ukrainian Programming Olympiad 2017.</li>
         </ul>
       </div>

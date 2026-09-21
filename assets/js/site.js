@@ -10,12 +10,9 @@
   function stored() { try { return localStorage.getItem(STORE); } catch (e) { return null; } }
   function store(v) { try { localStorage.setItem(STORE, v); } catch (e) {} }
 
+  /* dark is the default: the stored choice wins, otherwise stay dark */
   var saved = stored();
-  if (saved === "light" || saved === "dark") {
-    root.setAttribute("data-theme", saved);
-  } else {
-    root.setAttribute("data-theme", window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
-  }
+  root.setAttribute("data-theme", saved === "light" ? "light" : "dark");
 
   var themeBtn = document.getElementById("theme-toggle");
   if (themeBtn) {
@@ -125,6 +122,21 @@
     });
   });
 
+  /* ------------------------------------------------------ youtube facades */
+  document.querySelectorAll("[data-yt]").forEach(function (box) {
+    var btn = box.querySelector("button");
+    if (!btn) { return; }
+    btn.addEventListener("click", function () {
+      var frame = document.createElement("iframe");
+      frame.src = "https://www.youtube-nocookie.com/embed/" + box.getAttribute("data-yt") + "?autoplay=1&rel=0";
+      frame.title = box.getAttribute("data-yt-title") || "Video";
+      frame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture";
+      frame.setAttribute("allowfullscreen", "");
+      box.textContent = "";
+      box.appendChild(frame);
+    });
+  });
+
   /* ----------------------------------------------------------------- deck */
   var deck = document.querySelector("[data-deck]");
   if (!deck) { return; }
@@ -200,4 +212,5 @@
     var n = parseInt((location.hash || "").replace("#", ""), 10);
     if (!isNaN(n) && n > 0) { show(n - 1, false); }
   });
+
 })();

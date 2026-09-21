@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Anton Chernysh — Site Reliability Engineer, Zurich</title>
-<meta name="description" content="Site Reliability Engineer in Zurich. SLOs, error budgets, Kubernetes and infrastructure as code at DFINITY and Taurus; a protein analyser in Rust and WebAssembly, and other side projects.">
+<meta name="description" content="Site Reliability Engineer in Zurich. SLOs, error budgets, Kubernetes and infrastructure as code at DFINITY and Taurus, plus seven public repositories from WebAssembly to Z80 assembly.">
 <meta name="author" content="Anton Chernysh Kornishuk">
 <link rel="canonical" href="https://visn0.github.io/portfolio/">
 
@@ -69,8 +69,8 @@
         <h1>Anton Chernysh</h1>
         <p class="hero-bio">
           I keep production systems measurable, and then keep them that way. At DFINITY I build and scale
-          <strong>caffeine.ai</strong>, an AI-driven platform for deploying full-stack applications on a
-          decentralised network, and I run the reliability practice around it: SLOs, error budgets,
+          <strong>caffeine.ai</strong>, an AI-driven platform for building and deploying full-stack applications
+          in the cloud, and I run the reliability practice around it: SLOs, error budgets,
           incident response and postmortems.
         </p>
         <p class="hero-bio">
@@ -102,10 +102,10 @@
     <div class="section-head">
       <p class="eyebrow">Projects</p>
       <div>
-        <h2>Four things I built, and what they proved</h2>
+        <h2>Seven repositories, and what they taught me</h2>
         <p class="section-lede">
-          Slide through them, or open the full write-up. Every number came off a benchmark run or a test
-          suite — none of it is estimated.
+          Scroll sideways. The first you can watch end to end; the rest link straight to the code. Every
+          date below is the last commit, so nothing here pretends to be newer than it is.
         </p>
       </div>
     </div>
@@ -113,67 +113,81 @@
     <div class="carousel" data-carousel>
       <div class="carousel-track" id="projects-track" tabindex="0" role="group" aria-label="Projects, horizontally scrollable">
 
-        <article class="card card--watch">
-          <p class="card-kicker">Watch · 26 seconds</p>
-          <h3>One lookup, end to end</h3>
-          <video controls preload="metadata" playsinline
-                 poster="assets/img/protein-structure-3d.jpg"
-                 aria-label="Screen recording: typing the P04637 accession into the analyser, the record loading from UniProt, the analysis running, and the 3D cartoon being drawn.">
-            <source src="assets/video/protein-analysis-demo.webm" type="video/webm">
-            <source src="assets/video/protein-analysis-demo.mp4" type="video/mp4">
-            Your browser cannot play this video. <a href="assets/video/protein-analysis-demo.mp4">Download it</a>.
-          </video>
-          <p>An identifier goes in, a UniProt record comes back, the analysis runs in WebAssembly and the structure is drawn. No backend, nothing faked.</p>
-        </article>
-
         <article class="card">
+          <figure class="card-media card-media--video">
+            <video controls preload="metadata" playsinline poster="assets/img/protein-structure-3d.jpg"
+                   aria-label="Screen recording: the P04637 accession typed in, the record fetched from UniProt, the analysis run in WebAssembly, then the 3D cartoon drawn.">
+              <source src="assets/video/protein-analysis-demo.webm" type="video/webm">
+              <source src="assets/video/protein-analysis-demo.mp4" type="video/mp4">
+              Your browser cannot play this video. <a href="assets/video/protein-analysis-demo.mp4">Download it</a>.
+            </video>
+          </figure>
           <p class="card-kicker">01 · Rust → WebAssembly</p>
-          <h3>A protein analyser in the browser</h3>
-          <p>
-            Paste a sequence, a UniProt accession or an Ensembl ID and it fetches the record live, analyses
-            it in WebAssembly compiled from Rust, and draws the 3D structure — with a CPU rasteriser for
-            browsers that have WebGL switched off.
-          </p>
-          <div class="tags"><span class="tag">Rust</span><span class="tag">WebAssembly</span><span class="tag">TypeScript</span></div>
-          <p class="card-foot"><a href="projects.html#protein">Read the write-up &rarr;</a></p>
+          <h3>Protein with Rust</h3>
+          <p>Paste a sequence, a UniProt accession or an Ensembl ID, or import FASTA, GenBank or PDB: the record is fetched live and the analysis runs in WebAssembly compiled from Rust. The 3D cartoon uses WebGL where the browser offers it, and the same mesh rasterised on the CPU where it does not.</p>
+          <div class="tags"><span class="tag">Rust</span><span class="tag">WebAssembly</span><span class="tag">TypeScript</span><span class="tag">Vite</span></div>
+          <p class="card-foot"><span class="card-date">Last commit 20 Sep 2026</span><a href="projects.html#protein">Write-up &rarr;</a><span class="card-date">private repo</span></p>
         </article>
 
         <article class="card">
-          <p class="card-kicker">02 · LLM inference</p>
-          <h3>Half the KV cache, no slower</h3>
-          <p>
-            An implementation of TurboQuant (ICLR 2026) wired into vLLM and benchmarked on real GPUs:
-            3-bit keys and 2-bit values cut KV memory by <strong>30.9 % per GPU</strong> and doubled the
-            maximum context to 914,144 tokens, with decode slightly faster rather than slower.
-          </p>
-          <div class="tags"><span class="tag">vLLM</span><span class="tag">CUDA</span><span class="tag">Python</span></div>
-          <p class="card-foot"><a href="projects.html#kv-cache">Read the write-up &rarr;</a></p>
+          <p class="card-kicker">02 · Go · Vue · DDD</p>
+          <h3>GoChess</h3>
+          <p>A chess server and client built to practise domain-driven design: matches, move validation and check detection live in a hexagonal Go domain layer behind WebSockets, with a Vue 3 board on top. Reading the domain tests is the fastest way into this one.</p>
+          <div class="tags"><span class="tag">Go</span><span class="tag">goFiber</span><span class="tag">Vue 3</span><span class="tag">WebSockets</span><span class="tag">DDD</span></div>
+          <p class="card-foot"><span class="card-date">Last commit 30 Apr 2023</span><a href="https://github.com/Visn0/goChess" target="_blank" rel="noopener">Repo &rarr;</a></p>
         </article>
 
         <article class="card">
-          <p class="card-kicker">03 · Agents over MCP</p>
-          <h3>A cloud lab in docker compose</h3>
-          <p>
-            A simulated protein-design foundry: browse targets, submit binder sequences, get a cost
-            estimate, watch experiments move through lab stages, pull structured results — driven end to
-            end by an AI agent over MCP, which also beta-tests the API in CI.
-          </p>
-          <div class="tags"><span class="tag">FastAPI</span><span class="tag">Postgres</span><span class="tag">Next.js</span><span class="tag">MCP</span></div>
-          <p class="card-foot"><a href="projects.html#cloud-lab">Read the write-up &rarr;</a></p>
+          <figure class="card-media">
+            <img src="assets/img/projects/pathfinding-ui.jpg" alt="Screenshot of the path-finding visualiser mid-search" width="1200" height="622" loading="lazy">
+          </figure>
+          <p class="card-kicker">03 · Algorithms in the browser</p>
+          <h3>Path Finding Visualizer</h3>
+          <p>Draw a maze, pick an algorithm, watch it search: A*, backtracking, branch and bound, randomised BFS and DFS, plus two maze generators — all hand-written TypeScript over a canvas board, bundled by Parcel with no framework.</p>
+          <div class="tags"><span class="tag">TypeScript</span><span class="tag">A*</span><span class="tag">BFS / DFS</span><span class="tag">Canvas</span><span class="tag">Parcel</span></div>
+          <p class="card-foot"><span class="card-date">Last commit 17 Sep 2021</span><a href="https://github.com/Visn0/pathfinding-ui" target="_blank" rel="noopener">Repo &rarr;</a></p>
         </article>
 
         <article class="card">
-          <p class="card-kicker">04 · Web app</p>
-          <h3>A meal planner that respects the season</h3>
-          <p>
-            Daily targets from your own profile, then balanced weekly meals from a curated Swiss-winter
-            ingredient database, one consolidated shopping list, and optional AI-generated meal images
-            that quietly switch off when there is no API token.
-          </p>
-          <div class="tags"><span class="tag">Python</span><span class="tag">Flask</span><span class="tag">Hugging Face</span></div>
-          <p class="card-foot"><a href="projects.html#meal-planner">Read the write-up &rarr;</a></p>
+          <p class="card-kicker">04 · Market data in Go</p>
+          <h3>goBinance</h3>
+          <p>A small Go client for exchange WebSocket streams — kline and book-ticker topics, a subscribe/message abstraction, a socket that reconnects — written while learning Go and testing triangular-arbitrage ideas against live order books.</p>
+          <div class="tags"><span class="tag">Go</span><span class="tag">WebSockets</span><span class="tag">goroutines</span><span class="tag">market data</span></div>
+          <p class="card-foot"><span class="card-date">Last commit 8 Sep 2021</span><a href="https://github.com/Visn0/goBinance" target="_blank" rel="noopener">Repo &rarr;</a></p>
         </article>
 
+        <article class="card">
+          <figure class="card-media">
+            <img src="assets/img/projects/universityhack.png" alt="Forecast against actual sales over time, from the UniversityHack notebook" width="1200" height="332" loading="lazy">
+          </figure>
+          <p class="card-kicker">05 · Data science</p>
+          <h3>UniversityHack 2021</h3>
+          <p>The notebook that went in for Cajamar UniversityHack: two years of order and catalogue data turned into features that forecast product sales, scored on rRMSE with a stock-out penalty. pandas and scikit-learn, and more distribution plots than I would write today.</p>
+          <div class="tags"><span class="tag">Python</span><span class="tag">Jupyter</span><span class="tag">pandas</span><span class="tag">scikit-learn</span></div>
+          <p class="card-foot"><span class="card-date">Last commit 21 Aug 2021</span><a href="https://github.com/Visn0/UniversityHack" target="_blank" rel="noopener">Repo &rarr;</a></p>
+        </article>
+
+        <article class="card">
+          <figure class="card-media card-media--contain">
+            <img src="assets/img/projects/cellblock-title.png" alt="Cell Block title screen on the Amstrad CPC" width="480" height="600" loading="lazy">
+          </figure>
+          <p class="card-kicker">06 · Z80 assembly</p>
+          <h3>Cell Block</h3>
+          <p>A maze-and-enemies game for the Amstrad CPC written in Z80 assembly with CPCtelera: hand-drawn pixel art, sprite and level data, collision handling and a bootable tape image. A four-person university team — the code and the graphics were mine.</p>
+          <div class="tags"><span class="tag">Z80 assembly</span><span class="tag">CPCtelera</span><span class="tag">Amstrad CPC</span><span class="tag">pixel art</span></div>
+          <p class="card-foot"><span class="card-date">Last commit 3 Nov 2020</span><a href="https://github.com/Visn0/c19retro_z80" target="_blank" rel="noopener">Repo &rarr;</a></p>
+        </article>
+
+        <article class="card">
+          <figure class="card-media">
+            <img src="assets/img/projects/nn-from-scratch.png" alt="Training and test mean squared error over 150 epochs" width="800" height="600" loading="lazy">
+          </figure>
+          <p class="card-kicker">07 · C++ · reinforcement learning</p>
+          <h3>NN from scratch</h3>
+          <p>A neural network with no framework behind it: layers, backpropagation and an agent that learns to play Atari through the bundled Arcade Learning Environment. The training curves in the repository are its own runs.</p>
+          <div class="tags"><span class="tag">C++</span><span class="tag">CMake</span><span class="tag">backpropagation</span><span class="tag">ALE</span></div>
+          <p class="card-foot"><span class="card-date">Last commit 23 Jan 2021</span><a href="https://github.com/Visn0/NN_from_scratch" target="_blank" rel="noopener">Repo &rarr;</a></p>
+        </article>
       </div>
 
       <div class="carousel-nav">
@@ -185,7 +199,7 @@
           Next
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
         </button>
-        <a class="mono" href="projects.html" style="text-decoration:none">All four in detail &rarr;</a>
+        <a class="mono" href="projects.html" style="text-decoration:none">All seven in detail &rarr;</a>
       </div>
     </div>
   </section>
@@ -197,8 +211,8 @@
       <div>
         <h2>Six years in production</h2>
         <p class="section-lede">
-          Reliability, platform and software engineering across Switzerland, Spain and Luxembourg — from
-          decentralised compute and regulated finance to travel traffic at billions of requests a day.
+          Reliability, platform and software engineering across Switzerland, Spain and Luxembourg — from AI
+          platforms and regulated finance to travel traffic at billions of requests a day.
         </p>
       </div>
     </div>
@@ -213,7 +227,7 @@
         <div>
           <h4>Site Reliability Engineer</h4>
           <ul>
-            <li>Built and scaled <strong>caffeine.ai</strong>, an AI-driven platform for deploying full-stack applications on a decentralised network.</li>
+            <li>Built and scaled <strong>caffeine.ai</strong>, an AI-driven platform for building and deploying full-stack applications in the cloud.</li>
             <li>Established monitoring, SLOs and error budgets, reducing <strong>MTTD by 30 %</strong> through enhanced observability; lead incident response via postmortems.</li>
             <li>Managed cloud infrastructure with Pulumi and Kubernetes, cutting toil through automated code review, SRE agents and internal AI workflows — <strong>tickets down 60 %</strong>.</li>
           </ul>
@@ -301,6 +315,68 @@
     </div>
   </section>
 
+  <!-- ---------------------------------------------------- competitions -->
+  <section class="section shell" id="competitions">
+    <div class="section-head">
+      <p class="eyebrow">Competitions</p>
+      <div>
+        <h2>Two competitions worth showing</h2>
+        <p class="section-lede">
+          One was decided on a table of numbers, the other on a table with a robot on it. The recordings
+          were filmed by my school, and together they are about three minutes of proof that it worked.
+        </p>
+      </div>
+    </div>
+
+    <div class="panel-grid">
+      <figure class="award-shot reveal">
+        <img src="assets/img/competitions/global-management-challenge.jpg"
+             alt="The winning team holding the Global Management Challenge trophy at the Cámara de Alcoy awards ceremony."
+             width="1600" height="1012" loading="lazy">
+        <figcaption>Global Management Challenge — first prize, collecting the trophy at the Cámara de Alcoy ceremony.</figcaption>
+      </figure>
+
+      <div>
+        <div class="entry reveal">
+          <div class="entry-head">
+            <h4>Global Management Challenge <span class="medal">· First prize</span></h4>
+          </div>
+          <p>
+            A business simulation played over several rounds of decisions — pricing, production, marketing,
+            financing and hiring — judged on the value of the company you end up running. Our team finished
+            first; the trophy is in the photograph, and the decisions behind it were spreadsheet arguments
+            rather than luck.
+          </p>
+        </div>
+
+        <div class="entry reveal">
+          <div class="entry-head">
+            <h4>Desafío Robot <span class="medal">· First place, 2016 and 2017</span></h4>
+            <span class="entry-when">May 2016</span>
+          </div>
+          <p>
+            A regional robotics contest run in two rounds: a speed run and a skill circuit. Filmed by my
+            school, IES Núm. 1 Libertas — the skill round is 32 seconds, the speed run is the full two
+            minutes.
+          </p>
+          <div class="video-pair">
+            <div class="video-facade" data-yt="OQghDClwiew" data-yt-title="Desafío Robot 2016, skill round">
+              <img src="assets/img/competitions/robot-challenge-1.jpg"
+                   alt="Preview of the Desafío Robot 2016 skill round" width="1280" height="720" loading="lazy">
+              <button class="video-play" type="button">▶ Play · skill round · 0:32</button>
+            </div>
+            <div class="video-facade" data-yt="-akr7WYO4GA" data-yt-title="Desafío Robot 2016, speed run">
+              <img src="assets/img/competitions/robot-challenge-2.jpg"
+                   alt="Preview of the Desafío Robot 2016 speed run" width="1280" height="720" loading="lazy">
+              <button class="video-play" type="button">▶ Play · speed run · 2:19</button>
+            </div>
+          </div>
+          <p class="video-cap">Click to play — YouTube is not contacted until you do.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- -------------------------------------------------------- toolkit -->
   <section class="section shell" id="toolkit">
     <div class="section-head">
@@ -354,9 +430,8 @@
             <span class="entry-when">2014 – 2021</span>
           </div>
           <p>
-            Finalist, UniversityHack 2021 (sales prediction) · 1st place, DesafioRobot 2016 and 2017 ·
-            1st place, local Mathematics Olympiad 2014 and 2016 · 4th place, Ukrainian Programming
-            Olympiad 2017.
+            Finalist, UniversityHack 2021 (sales prediction) · 1st place, local Mathematics
+            Olympiad 2014 and 2016 · 4th place, Ukrainian Programming Olympiad 2017.
           </p>
         </div>
       </div>
