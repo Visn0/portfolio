@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Anton Chernysh — Site Reliability Engineer, Zurich</title>
-<meta name="description" content="Site Reliability Engineer in Zurich. SLOs, error budgets, Kubernetes and infrastructure as code at DFINITY and Taurus; Rust/WebAssembly and Go side projects.">
+<meta name="description" content="Site Reliability Engineer in Zurich. SLOs, error budgets, Kubernetes and infrastructure as code at DFINITY and Taurus; a protein analyser in Rust and WebAssembly, and other side projects.">
 <meta name="author" content="Anton Chernysh Kornishuk">
 <link rel="canonical" href="https://visn0.github.io/portfolio/">
 
@@ -27,6 +27,7 @@
   "alternateName": "Anton Chernysh",
   "jobTitle": "Site Reliability Engineer",
   "url": "https://visn0.github.io/portfolio/",
+  "image": "https://visn0.github.io/portfolio/assets/img/anton.jpg",
   "address": { "@type": "PostalAddress", "addressLocality": "Zurich", "addressCountry": "CH" },
   "sameAs": [
     "https://github.com/Visn0",
@@ -47,20 +48,6 @@
       Anton Chernysh <span class="brand-dot" aria-hidden="true">/</span>
       <span class="brand-meta">SRE · Zurich</span>
     </a>
-
-    <button class="icon-btn menu-btn" id="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Menu">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
-    </button>
-
-    <nav class="nav" id="primary-nav" data-open="false" aria-label="Primary">
-      <a href="index.html#work">Work</a>
-      <a href="index.html#experience">Experience</a>
-      <a href="projects.html">Projects</a>
-      <a href="presentation.html">Deck</a>
-      <a href="resume.html">CV</a>
-      <a href="index.html#contact">Contact</a>
-    </nav>
-
     <button class="icon-btn" id="theme-toggle" type="button" aria-label="Switch to light theme" title="Switch theme">
       <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
       <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
@@ -70,70 +57,65 @@
 
 <main id="main">
 
-  <!-- ------------------------------------------------------------------ hero -->
-  <section class="hero shell">
-    <div class="hero-grid">
+  <!-- ------------------------------------------------------- who I am -->
+  <section class="hero-simple shell">
+    <div class="hero-inner">
+      <figure class="portrait reveal">
+        <img src="assets/img/anton.jpg" alt="Anton Chernysh" width="594" height="789">
+      </figure>
+
       <div>
         <p class="eyebrow">Site Reliability Engineer · Zurich, Switzerland</p>
-        <h1>
-          Anton Chernysh
-          <span class="thin">I make production systems measurable — then keep them that way.</span>
-        </h1>
-        <p class="hero-lede">
-          Reliability engineering across decentralised compute, regulated financial infrastructure and
-          high-volume travel traffic. SLOs, error budgets and observability at DFINITY; Terraform,
-          Kubernetes and 24/7 on-call for crypto infrastructure at Taurus; a PHP-to-Go rewrite at
-          Webbeds that carried 6 billion requests a day at four times the throughput.
+        <h1>Anton Chernysh</h1>
+        <p class="hero-bio">
+          I keep production systems measurable, and then keep them that way. At DFINITY I build and scale
+          <strong>caffeine.ai</strong>, an AI-driven platform for deploying full-stack applications on a
+          decentralised network, and I run the reliability practice around it: SLOs, error budgets,
+          incident response and postmortems.
         </p>
-        <p class="hero-quote">“If you cannot measure it, you cannot improve it.”</p>
+        <p class="hero-bio">
+          Before that I looked after regulated financial infrastructure at Taurus — Terraform, Kubernetes
+          and 24/7 on-call — and at Webbeds I refactored core services from PHP to Go for 6 billion
+          requests a day at four times the throughput. I write Go, Python and Rust, and I prefer problems
+          where the answer has to be measured rather than argued about. “If you cannot measure it, you
+          cannot improve it.”
+        </p>
+
+        <p class="hero-meta">
+          <span>Zurich, Switzerland</span>
+          <span>Site Reliability Engineer, DFINITY</span>
+          <span>Ukrainian, Spanish (native) · English · German</span>
+        </p>
+
         <div class="cta-row">
-          <a class="btn btn--primary" href="resume.html">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 5h16v14H4zM8 9h8M8 13h5"/></svg>
-            Read the CV
-          </a>
-          <a class="btn" href="presentation.html">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 4h18v12H3zM8 20h8M12 16v4"/></svg>
-            Project deck
-          </a>
-          <a class="btn" href="https://www.linkedin.com/in/anton-chernysh/" target="_blank" rel="me noopener">LinkedIn</a>
+          <a class="btn btn--primary" href="https://www.linkedin.com/in/anton-chernysh/" target="_blank" rel="me noopener">LinkedIn</a>
           <a class="btn" href="https://github.com/Visn0" target="_blank" rel="me noopener">GitHub</a>
+          <a class="btn" href="resume.html">CV</a>
+          <a class="btn" href="presentation.html">Project deck</a>
         </div>
       </div>
-
-      <aside class="facts" aria-label="Profile summary">
-        <div class="facts-head">
-          <span class="mono">Profile</span>
-          <span class="status mono"><span class="status-dot" aria-hidden="true"></span>Zurich, CH</span>
-        </div>
-        <dl>
-          <div class="row"><dt>Now</dt><dd>Site Reliability Engineer, DFINITY</dd></div>
-          <div class="row"><dt>Focus</dt><dd>SLOs &amp; error budgets · Kubernetes · IaC · observability</dd></div>
-          <div class="row"><dt>Writes</dt><dd>Go · Python · Rust · TypeScript · SQL</dd></div>
-          <div class="row"><dt>Runs</dt><dd>AWS · GCP · Linux · GitHub Actions</dd></div>
-          <div class="row"><dt>Speaks</dt><dd>Ukrainian, Spanish (native) · English (proficient) · German (beginner)</dd></div>
-          <div class="row"><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/anton-chernysh/" target="_blank" rel="me noopener">in/anton-chernysh</a></dd></div>
-          <div class="row"><dt>Code</dt><dd><a href="https://github.com/Visn0" target="_blank" rel="me noopener">github.com/Visn0</a></dd></div>
-        </dl>
-      </aside>
     </div>
   </section>
 
-  <!-- ------------------------------------------------------------------ work -->
-  <section class="section shell" id="work">
+  <!-- -------------------------------------------------------- projects -->
+  <section class="section shell" id="projects">
     <div class="section-head">
-      <p class="eyebrow">Selected work</p>
+      <p class="eyebrow">Projects</p>
       <div>
-        <h2>Things I built and had to keep alive</h2>
+        <h2>Four things I built, and what they proved</h2>
         <p class="section-lede">
-          Production platforms at work, and the side projects where I try ideas out with nobody
-          depending on them. Every claim below is a number I measured.
+          Slide through them, or open the full write-up. Every number came off a benchmark run or a test
+          suite — none of it is estimated.
         </p>
       </div>
     </div>
 
-    <div class="feature reveal">
-      <div class="feature-grid">
-        <div class="feature-media">
+    <div class="carousel" data-carousel>
+      <div class="carousel-track" id="projects-track" tabindex="0" role="group" aria-label="Projects, horizontally scrollable">
+
+        <article class="card card--watch">
+          <p class="card-kicker">Watch · 26 seconds</p>
+          <h3>One lookup, end to end</h3>
           <video controls preload="metadata" playsinline
                  poster="assets/img/protein-structure-3d.jpg"
                  aria-label="Screen recording: typing the P04637 accession into the analyser, the record loading from UniProt, the analysis running, and the 3D cartoon being drawn.">
@@ -141,101 +123,82 @@
             <source src="assets/video/protein-analysis-demo.mp4" type="video/mp4">
             Your browser cannot play this video. <a href="assets/video/protein-analysis-demo.mp4">Download it</a>.
           </video>
-          <p class="caption">One lookup end to end: <code>P04637</code> typed in, fetched from UniProt, analysed in WebAssembly, drawn as a 3D cartoon. 26 s, no backend.</p>
-        </div>
-        <div class="feature-copy">
-          <p class="work-kicker">Featured · Rust → WebAssembly</p>
-          <h3>A protein analyser in Rust and WebAssembly</h3>
-          <p>
-            A protein analyser that runs entirely in the visitor's browser. Give it a sequence, a
-            UniProt accession or an Ensembl protein ID — or import a FASTA, GenBank, GFF3 or PDB file —
-            and you get composition, molecular weight, isoelectric point, a feature map, a hydropathy
-            profile, and an interactive 3D structure. Records are fetched live from public databases;
-            all the computing happens on your own CPU, compiled from Rust to WebAssembly.
-          </p>
-          <div class="stats">
-            <div class="stat"><span class="stat-k">Compute</span><span class="stat-v">Rust → WASM</span></div>
-            <div class="stat"><span class="stat-k">Backend</span><span class="stat-v">None</span></div>
-            <div class="stat"><span class="stat-k">Data</span><span class="stat-v">Live</span></div>
-            <div class="stat"><span class="stat-k">Deploy</span><span class="stat-v">One Worker</span></div>
-          </div>
-          <div class="tags">
-            <span class="tag">Rust</span><span class="tag">WebAssembly</span><span class="tag">TypeScript</span>
-            <span class="tag">Cloudflare Workers</span><span class="tag">Playwright</span>
-          </div>
-          <div class="work-links">
-            <a href="projects.html#protein">Read the write-up &rarr;</a>
-            <a href="presentation.html#4">See it in the deck</a>
-          </div>
-        </div>
-      </div>
-    </div>
+          <p>An identifier goes in, a UniProt record comes back, the analysis runs in WebAssembly and the structure is drawn. No backend, nothing faked.</p>
+        </article>
 
-    <div class="work reveal" style="margin-top: var(--sp-7)">
-      <a class="work-row" href="projects.html#kv-cache">
-        <span class="work-idx">01</span>
-        <div>
-          <p class="work-kicker">LLM inference · applied research</p>
-          <h3>TurboQuant — KV-cache compression for vLLM</h3>
-          <div class="tags"><span class="tag">vLLM</span><span class="tag">CUDA</span><span class="tag">Python</span><span class="tag">MoE</span></div>
-        </div>
-        <div class="work-body">
+        <article class="card">
+          <p class="card-kicker">01 · Rust → WebAssembly</p>
+          <h3>A protein analyser in the browser</h3>
           <p>
-            An implementation of TurboQuant (ICLR 2026, arXiv:2504.19874) wired into vLLM and benchmarked
-            on real hardware. Three-bit keys and two-bit values cut KV-cache memory by <strong>30.9 % per GPU</strong>
-            and doubled the maximum context to <strong>914,144 tokens</strong>, while decode throughput rose 3.1 % at
-            30k context instead of falling.
+            Paste a sequence, a UniProt accession or an Ensembl ID and it fetches the record live, analyses
+            it in WebAssembly compiled from Rust, and draws the 3D structure — with a CPU rasteriser for
+            browsers that have WebGL switched off.
           </p>
-          <span class="mono">Read the write-up &rarr;</span>
-        </div>
-      </a>
+          <div class="tags"><span class="tag">Rust</span><span class="tag">WebAssembly</span><span class="tag">TypeScript</span></div>
+          <p class="card-foot"><a href="projects.html#protein">Read the write-up &rarr;</a></p>
+        </article>
 
-      <a class="work-row" href="projects.html#cloud-lab">
-        <span class="work-idx">02</span>
-        <div>
-          <p class="work-kicker">Platform simulation · agents over MCP</p>
+        <article class="card">
+          <p class="card-kicker">02 · LLM inference</p>
+          <h3>Half the KV cache, no slower</h3>
+          <p>
+            An implementation of TurboQuant (ICLR 2026) wired into vLLM and benchmarked on real GPUs:
+            3-bit keys and 2-bit values cut KV memory by <strong>30.9 % per GPU</strong> and doubled the
+            maximum context to 914,144 tokens, with decode slightly faster rather than slower.
+          </p>
+          <div class="tags"><span class="tag">vLLM</span><span class="tag">CUDA</span><span class="tag">Python</span></div>
+          <p class="card-foot"><a href="projects.html#kv-cache">Read the write-up &rarr;</a></p>
+        </article>
+
+        <article class="card">
+          <p class="card-kicker">03 · Agents over MCP</p>
           <h3>A cloud lab in docker compose</h3>
-          <div class="tags"><span class="tag">FastAPI</span><span class="tag">Postgres</span><span class="tag">Redis</span><span class="tag">Next.js</span><span class="tag">MCP</span></div>
-        </div>
-        <div class="work-body">
           <p>
-            A self-contained simulation of a protein-design foundry API: browse targets, submit binder
-            sequences as an experiment, get a cost estimate, poll it through lab stages, pull structured
-            results. An AI agent drives the whole loop over MCP — and uses the same interface to hunt for
-            bugs in the service.
+            A simulated protein-design foundry: browse targets, submit binder sequences, get a cost
+            estimate, watch experiments move through lab stages, pull structured results — driven end to
+            end by an AI agent over MCP, which also beta-tests the API in CI.
           </p>
-          <span class="mono">Read the write-up &rarr;</span>
-        </div>
-      </a>
+          <div class="tags"><span class="tag">FastAPI</span><span class="tag">Postgres</span><span class="tag">Next.js</span><span class="tag">MCP</span></div>
+          <p class="card-foot"><a href="projects.html#cloud-lab">Read the write-up &rarr;</a></p>
+        </article>
 
-      <a class="work-row" href="projects.html#meal-planner">
-        <span class="work-idx">03</span>
-        <div>
-          <p class="work-kicker">Web app · Python</p>
+        <article class="card">
+          <p class="card-kicker">04 · Web app</p>
           <h3>A meal planner that respects the season</h3>
-          <div class="tags"><span class="tag">Python</span><span class="tag">Flask</span><span class="tag">Hugging Face</span></div>
-        </div>
-        <div class="work-body">
           <p>
-            Calculates daily caloric needs from a personal profile, then builds balanced weekly meal plans
-            from a curated database of Swiss winter ingredients, with a consolidated shopping list and
-            optional AI-generated meal images.
+            Daily targets from your own profile, then balanced weekly meals from a curated Swiss-winter
+            ingredient database, one consolidated shopping list, and optional AI-generated meal images
+            that quietly switch off when there is no API token.
           </p>
-          <span class="mono">Read the write-up &rarr;</span>
-        </div>
-      </a>
+          <div class="tags"><span class="tag">Python</span><span class="tag">Flask</span><span class="tag">Hugging Face</span></div>
+          <p class="card-foot"><a href="projects.html#meal-planner">Read the write-up &rarr;</a></p>
+        </article>
+
+      </div>
+
+      <div class="carousel-nav">
+        <button class="btn" id="carousel-prev" type="button" aria-label="Previous project">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+          Prev
+        </button>
+        <button class="btn" id="carousel-next" type="button" aria-label="Next project">
+          Next
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+        </button>
+        <a class="mono" href="projects.html" style="text-decoration:none">All four in detail &rarr;</a>
+      </div>
     </div>
   </section>
 
-  <!-- ------------------------------------------------------------- experience -->
+  <!-- ------------------------------------------------------ experience -->
   <section class="section shell" id="experience">
     <div class="section-head">
       <p class="eyebrow">Experience</p>
       <div>
         <h2>Six years in production</h2>
         <p class="section-lede">
-          Reliability, platform and software engineering across Switzerland, Spain and Luxembourg —
-          from decentralised compute and regulated finance to travel traffic at billions of requests a day.
+          Reliability, platform and software engineering across Switzerland, Spain and Luxembourg — from
+          decentralised compute and regulated finance to travel traffic at billions of requests a day.
         </p>
       </div>
     </div>
@@ -338,8 +301,8 @@
     </div>
   </section>
 
-  <!-- ----------------------------------------------------------------- skills -->
-  <section class="section shell" id="skills">
+  <!-- -------------------------------------------------------- toolkit -->
+  <section class="section shell" id="toolkit">
     <div class="section-head">
       <p class="eyebrow">Toolkit</p>
       <div><h2>What I work with</h2></div>
@@ -368,7 +331,7 @@
     </div>
   </section>
 
-  <!-- ------------------------------------------------------- recognition -->
+  <!-- ---------------------------------------------------- recognition -->
   <section class="section shell" id="recognition">
     <div class="section-head">
       <p class="eyebrow">Recognition &amp; education</p>
@@ -421,46 +384,13 @@
     </div>
   </section>
 
-  <!-- ------------------------------------------------------------ present -->
-  <section class="section shell" id="present">
-    <div class="section-head">
-      <p class="eyebrow">Present &amp; share</p>
-      <div>
-        <h2>The five-minute version</h2>
-        <p class="section-lede">
-          Two ways to get through this without reading: a recorded walkthrough of the featured project,
-          and a short deck covering the reliability work and all four projects.
-        </p>
-      </div>
-    </div>
-
-    <div class="panel-grid">
-      <div class="entry reveal" style="border-top:0">
-        <div class="entry-head"><h4>Watch — the analyser, 26 seconds</h4><span class="entry-when">screen recording</span></div>
-        <p>An identifier goes in, a UniProt record comes back, the analysis runs in WebAssembly and the structure is drawn. No cut, no backend.</p>
-        <div class="cta-row">
-          <a class="btn" href="assets/video/protein-analysis-demo.mp4">Open the recording</a>
-        </div>
-      </div>
-      <div class="entry reveal" style="border-top:0">
-        <div class="entry-head"><h4>Present — the project deck</h4><span class="entry-when">10 slides</span></div>
-        <p>What an SRE actually does all day, then a slide per project with the numbers, and the contact details on the last one. Arrow keys move; <span class="mono">N</span> shows the speaker notes.</p>
-        <div class="cta-row">
-          <a class="btn btn--primary" href="presentation.html">Open the deck</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ------------------------------------------------------------ contact -->
+  <!-- ---------------------------------------------------------- contact -->
   <section class="contact shell" id="contact">
     <div class="contact-grid">
       <div>
         <p class="eyebrow">Contact</p>
         <h2>Open to reliability and platform conversations</h2>
-        <p class="section-lede">
-          Based in Zurich. The quickest route is a LinkedIn message — I read everything that is not a recruiter blast.
-        </p>
+        <p class="section-lede">Based in Zurich. LinkedIn is the quickest route — I read everything that is not a recruiter blast.</p>
         <div class="cta-row">
           <a class="btn btn--primary" href="https://www.linkedin.com/in/anton-chernysh/" target="_blank" rel="me noopener">Message me on LinkedIn</a>
           <a class="btn" href="https://github.com/Visn0" target="_blank" rel="me noopener">GitHub</a>
@@ -470,6 +400,7 @@
         <li><a href="https://www.linkedin.com/in/anton-chernysh/" target="_blank" rel="me noopener"><span class="k">LinkedIn</span><span class="v">in/anton-chernysh</span></a></li>
         <li><a href="https://github.com/Visn0" target="_blank" rel="me noopener"><span class="k">GitHub</span><span class="v">github.com/Visn0</span></a></li>
         <li><a href="resume.html"><span class="k">CV</span><span class="v">resume.html</span></a></li>
+        <li><a href="presentation.html"><span class="k">Deck</span><span class="v">10 slides</span></a></li>
       </ul>
     </div>
   </section>
@@ -478,7 +409,7 @@
 <footer class="site-footer">
   <div class="shell">
     <span>Anton Chernysh Kornishuk · Zurich, Switzerland</span>
-    <span>© <span data-year>2026</span> · <a href="index.html#contact">Contact</a> · <a href="projects.html">Projects</a> · <a href="presentation.html">Deck</a></span>
+    <span>© <span data-year>2026</span> · <a href="index.html">Home</a> · <a href="projects.html">Projects</a> · <a href="presentation.html">Deck</a> · <a href="resume.html">CV</a></span>
   </div>
 </footer>
 
