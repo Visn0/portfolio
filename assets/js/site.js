@@ -137,4 +137,75 @@
     });
   });
 
+  /* ------------------------------------------------------ image lightbox */
+  /* Every content image opens enlarged in a dialog of its own. Wrapped in a
+     real <button> so the affordance is focusable, not just clickable. */
+  function initLightbox() {
+    var SELECTOR = ".portrait img, .card-media img, .stills img, .comp-media img";
+    var sources = Array.prototype.slice.call(document.querySelectorAll(SELECTOR)).filter(function (img) {
+      /* the YouTube facades are click-to-play: leave their posters alone */
+      return !img.closest("[data-yt], a, button");
+    });
+    if (!sources.length) { return; }
+
+    var box = document.createElement("div");
+    box.className = "lightbox";
+    box.id = "lightbox";
+    box.hidden = true;
+    box.setAttribute("role", "dialog");
+    box.setAttribute("aria-modal", "true");
+    box.setAttribute("aria-label", "Enlarged image");
+    box.innerHTML =
+      '<button class="lightbox-close" type="button" aria-label="Close the enlarged image">' +
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">' +
+      '<path d="M6 6l12 12M18 6L6 18"/></svg></button>' +
+      '<img alt="">';
+    document.body.appendChild(box);
+
+    var big = box.querySelector("img");
+    var closeBtn = box.querySelector(".lightbox-close");
+    var pinned = null;
+
+    function open(img, trigger) {
+      big.setAttribute("src", img.currentSrc || img.getAttribute("src"));
+      big.setAttribute("alt", img.getAttribute("alt") || "");
+      /* pixel art stays pixel art when it is enlarged */
+      big.style.imageRendering = getComputedStyle(img).imageRendering === "pixelated" ? "pixelated" : "";
+      pinned = trigger;
+      box.hidden = false;
+      root.classList.add("lightbox-open");
+      document.body.classList.add("lightbox-open");
+      closeBtn.focus();
+    }
+
+    function close() {
+      if (box.hidden) { return; }
+      box.hidden = true;
+      big.removeAttribute("src");
+      root.classList.remove("lightbox-open");
+      document.body.classList.remove("lightbox-open");
+      if (pinned && pinned.focus) { pinned.focus(); }
+      pinned = null;
+    }
+
+    sources.forEach(function (img) {
+      var trigger = document.createElement("button");
+      trigger.type = "button";
+      trigger.className = "zoom-trigger";
+      trigger.setAttribute("aria-label", "Enlarge image: " + (img.getAttribute("alt") || "screenshot"));
+      img.parentNode.insertBefore(trigger, img);
+      trigger.appendChild(img);
+      trigger.addEventListener("click", function () { open(img, trigger); });
+    });
+
+    /* any click inside the overlay dismisses it — the whole surface is zoom-out */
+    box.addEventListener("click", function () { close(); });
+    document.addEventListener("keydown", function (e) {
+      if (box.hidden) { return; }
+      if (e.key === "Escape" || e.key === "Esc") { e.preventDefault(); close(); }
+      else if (e.key === "Tab") { e.preventDefault(); closeBtn.focus(); }
+    });
+  }
+  initLightbox();
+
 })();
