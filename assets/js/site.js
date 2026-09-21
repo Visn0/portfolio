@@ -208,4 +208,23 @@
   }
   initLightbox();
 
+  /* ------------------------------------------------------------ back to top */
+  var toTop = document.querySelector(".to-top");
+  if (toTop) {
+    /* nothing to scroll back to (the 404 page, say) means nothing to show */
+    function syncToTop() {
+      toTop.hidden = document.documentElement.scrollHeight <= window.innerHeight + 120;
+    }
+    syncToTop();
+    window.addEventListener("resize", syncToTop);
+
+    toTop.addEventListener("click", function (e) {
+      var calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      window.scrollTo({ top: 0, behavior: calm ? "auto" : "smooth" });
+      /* keyboard activation moves focus back to the top; a mouse click does not need the ring */
+      var brand = document.querySelector(".brand");
+      if (e.detail === 0 && brand && brand.focus) { brand.focus({ preventScroll: true }); }
+    });
+  }
+
 })();
