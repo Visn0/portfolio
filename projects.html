@@ -52,7 +52,6 @@
 
   <article class="case" id="protein">
     <div class="case-head">
-      <span class="case-idx">01 / Rust → WebAssembly</span>
       <h2>Protein with Rust</h2>
       <p class="section-lede">A protein explorer that runs entirely in the browser. Paste a sequence, a UniProt accession or an Ensembl protein ID, or import a FASTA, GenBank, GFF3 or PDB file — you get composition, molecular weight, isoelectric point, aromaticity, a feature map, a hydropathy profile and, for anything with a known structure, an interactive 3D cartoon. Every record is fetched live from a public database and all the analysis runs on your own CPU, compiled from Rust to WebAssembly. There is no backend on the critical path: open it and it works.</p>
     </div>
@@ -69,6 +68,7 @@
       <img src="assets/img/protein-analysis.jpg" alt="The analyser's results view: summary cards, sequence map and hydropathy profile" width="1280" height="800" loading="lazy">
       <img src="assets/img/protein-features.jpg" alt="The feature map and per-residue annotation drawn from the coordinate file" width="1280" height="800" loading="lazy">
     </figure>
+    <div class="tags"><span class="tag">Rust</span><span class="tag">WebAssembly</span><span class="tag">TypeScript</span><span class="tag">Vite</span><span class="tag">Playwright</span></div>
     <ul class="case-notes">
       <li>One action, three inputs: the app infers whether you gave it a document, an identifier or a sequence, and refuses a nucleotide sequence with an explanation rather than quietly translating it.</li>
       <li>Network in TypeScript, compute in Rust. Browser WebAssembly cannot issue HTTP requests cleanly, so the fetch calls live in TypeScript and the Rust core stays a pure function library — including the part that decides <em>which</em> URLs to request and how to read the answers, so the interesting logic stays testable Rust.</li>
@@ -76,14 +76,12 @@
       <li>Every label comes from the coordinate file itself — declared sites, named mutations, bound molecules, modified residues, chain ends, disulfides — and a label whose residue sits behind the protein is hidden rather than drawn through it.</li>
       <li>Honest failures: an unreachable API, an unparseable file or an identifier from outside the protein namespaces each produce a card that names the problem.</li>
     </ul>
-    <div class="tags"><span class="tag">Rust</span><span class="tag">WebAssembly</span><span class="tag">TypeScript</span><span class="tag">Vite</span><span class="tag">Playwright</span></div>
     <p class="mono case-foot">Last commit 20 Sep 2026 · <span class="card-date">Private repository — walkthrough on request</span></p>
   </article>
 
 
   <article class="case" id="chess">
     <div class="case-head">
-      <span class="case-idx">02 / Go · JavaScript · a joint project</span>
       <h2>Chess</h2>
       <p class="section-lede">A two-player chess game built with Carlos Arismendi Sánchez in the summer of 2021: a vanilla-JavaScript board talking to a Go backend over WebSockets. The repository has 128 commits and 25 of them are mine — my part was the rules, and the screenshots below are the feature I spent that fortnight on.</p>
     </div>
@@ -91,6 +89,7 @@
       <img src="assets/img/projects/chess.png" alt="The board mid-game with the last move highlighted and legal destinations circled" width="1200" height="1200" loading="lazy">
       <img src="assets/img/projects/chess-board.png" alt="The game on opening position with clocks, draw offer and resign controls" width="1200" height="1166" loading="lazy">
     </figure>
+    <div class="tags"><span class="tag">JavaScript</span><span class="tag">Go</span><span class="tag">Echo</span><span class="tag">WebSockets</span><span class="tag">HTML / CSS</span></div>
     <ul class="case-notes">
       <li><strong>The move-legality engine.</strong> Detecting check and which piece gives it, computing the squares that have to be defended, and restricting every piece — king included — to moves that answer the check. Two pieces checking at once, and a king whose escape square is blocked by its own piece, were the cases that took the longest.</li>
       <li><strong>Castling, properly.</strong> Both sides, the rook move, and the rule people forget: castling is cancelled when the king's path is attacked. A piece that would expose your own king simply does not move.</li>
@@ -98,99 +97,93 @@
       <li><strong>How it is split:</strong> front end in vanilla JavaScript and object-oriented style, no framework; backend in Go on Echo, WebSockets for the moves; the UI highlights the last move, the legal destinations of the selected piece, move sounds and draw offers.</li>
       <li><strong>What I would change now:</strong> the rules lived in the game object until we moved them into the board halfway through. That refactor is why the last week of fixes was quick instead of frightening.</li>
     </ul>
-    <div class="tags"><span class="tag">JavaScript</span><span class="tag">Go</span><span class="tag">Echo</span><span class="tag">WebSockets</span><span class="tag">HTML / CSS</span></div>
     <p class="mono case-foot">Last commit 3 Sep 2021 · <a href="https://github.com/carlosarismendi/chess" target="_blank" rel="noopener">Repository &rarr;</a> · <span class="card-date">with Carlos Arismendi Sánchez</span></p>
   </article>
 
 
   <article class="case" id="pathfinding">
     <div class="case-head">
-      <span class="case-idx">03 / TypeScript · algorithms</span>
       <h2>Path Finding Visualizer</h2>
       <p class="section-lede">A visualiser for maze generation and path finding: draw walls or generate a maze, choose an algorithm, and watch it explore the grid cell by cell.</p>
     </div>
     <figure class="stills">
       <img src="assets/img/projects/pathfinding-ui.jpg" alt="The visualiser mid-search: explored cells, the frontier and the final path" width="1200" height="622" loading="lazy">
     </figure>
+    <div class="tags"><span class="tag">TypeScript</span><span class="tag">A*</span><span class="tag">BFS / DFS</span><span class="tag">Canvas</span><span class="tag">Parcel</span></div>
     <ul class="case-notes">
       <li>Five solvers written from scratch: A*, backtracking, branch and bound, randomised BFS and randomised DFS, behind one <code>IAlgorithm</code> interface and a factory.</li>
       <li>Two generators — a random maze and a randomised star-shaped one — so the same solver can be compared on different topologies.</li>
       <li>Parcel bundles it; the animation is driven by CSS classes per cell rather than a drawing loop, which keeps the search itself readable.</li>
     </ul>
-    <div class="tags"><span class="tag">TypeScript</span><span class="tag">A*</span><span class="tag">BFS / DFS</span><span class="tag">Canvas</span><span class="tag">Parcel</span></div>
     <p class="mono case-foot">Last commit 17 Sep 2021 · <a href="https://github.com/Visn0/pathfinding-ui" target="_blank" rel="noopener">Repository &rarr;</a></p>
   </article>
 
 
   <article class="case" id="gobinance">
     <div class="case-head">
-      <span class="case-idx">04 / Go · market data</span>
       <h2>goBinance</h2>
       <p class="section-lede">A small Go client for exchange WebSocket streams, written while learning the language and testing whether triangular arbitrage across live order books is worth chasing. It is a learning repository, not a trading system.</p>
     </div>
+    <div class="tags"><span class="tag">Go</span><span class="tag">WebSockets</span><span class="tag">goroutines</span><span class="tag">market data</span></div>
     <ul class="case-notes">
       <li>Subscribes to kline and book-ticker topics over a single socket, with a message abstraction that maps subscription requests and stream events onto Go structs.</li>
       <li>Two runnable examples: one that streams quotes for a symbol pair, one that walks a triangular path across three markets.</li>
       <li>What it taught me was the shape of the problem rather than the profit: the spread that looks large in the stream is gone by the time three legs settle.</li>
     </ul>
-    <div class="tags"><span class="tag">Go</span><span class="tag">WebSockets</span><span class="tag">goroutines</span><span class="tag">market data</span></div>
     <p class="mono case-foot">Last commit 8 Sep 2021 · <a href="https://github.com/Visn0/goBinance" target="_blank" rel="noopener">Repository &rarr;</a></p>
   </article>
 
 
   <article class="case" id="universityhack">
     <div class="case-head">
-      <span class="case-idx">05 / Python · data science</span>
       <h2>UniversityHack 2021</h2>
       <p class="section-lede">The notebook that went in for the Cajamar UniversityHack 2021 datathon, hosted by PcComponentes: predict product sales per product and per day, scored on a metric that punishes stock-outs more than plain error.</p>
     </div>
     <figure class="stills">
       <img src="assets/img/projects/universityhack.png" alt="Forecast against actual sales over time, from the submitted notebook" width="1200" height="332" loading="lazy">
     </figure>
+    <div class="tags"><span class="tag">Python</span><span class="tag">Jupyter</span><span class="tag">pandas</span><span class="tag">scikit-learn</span><span class="tag">feature engineering</span></div>
     <ul class="case-notes">
       <li>Metric to minimise: <code>0.7 · rRMSE + 0.3 · (1 − CF)</code>, where <code>CF</code> is the share of cases where forecast demand stayed under real demand — so under-forecasting a popular item costs more than being slightly high.</li>
       <li>Feature work on product, price, campaign, tenure and calendar data, including cyclic encodings of the year and week, then a regression model over the engineered features.</li>
       <li>Kept as the final notebook rather than a tidy package: it is the work as it was submitted, plots included.</li>
     </ul>
-    <div class="tags"><span class="tag">Python</span><span class="tag">Jupyter</span><span class="tag">pandas</span><span class="tag">scikit-learn</span><span class="tag">feature engineering</span></div>
     <p class="mono case-foot">Last commit 21 Aug 2021 · <a href="https://github.com/Visn0/UniversityHack" target="_blank" rel="noopener">Repository &rarr;</a></p>
   </article>
 
 
   <article class="case" id="cellblock">
     <div class="case-head">
-      <span class="case-idx">06 / Z80 assembly · Amstrad CPC</span>
       <h2>Cell Block</h2>
       <p class="section-lede">A maze-and-enemies game for the Amstrad CPC, written in Z80 assembly on top of CPCtelera and released as a bootable tape image. A four-person team project for the Automated Reasoning course: the code and the graphics were mine, the loading screen and music were not.</p>
     </div>
     <figure class="stills">
       <img src="assets/img/projects/cellblock-title.png" alt="Cell Block title screen on the Amstrad CPC" width="480" height="600" loading="lazy">
     </figure>
+    <div class="tags"><span class="tag">Z80 assembly</span><span class="tag">CPCtelera</span><span class="tag">Amstrad CPC</span><span class="tag">pixel art</span></div>
     <ul class="case-notes">
       <li>Hand-written Z80 assembly for a 4 MHz machine with 64 KB of memory: sprites, tile maps, movement, collision and a fixed-timestep game loop.</li>
       <li>Built against a pinned CPCtelera commit; <code>make cleanall &amp;&amp; make</code> produces <code>CellBlock.cdt</code>, which boots in an emulator or on real hardware.</li>
       <li>Twenty-one assembly sources and seventeen hand-drawn sprites — the discipline of counting bytes is the part that carried over into my day job.</li>
     </ul>
-    <div class="tags"><span class="tag">Z80 assembly</span><span class="tag">CPCtelera</span><span class="tag">Amstrad CPC</span><span class="tag">pixel art</span></div>
     <p class="mono case-foot">Last commit 3 Nov 2020 · <a href="https://github.com/Visn0/c19retro_z80" target="_blank" rel="noopener">Repository &rarr;</a></p>
   </article>
 
 
   <article class="case" id="nn-from-scratch">
     <div class="case-head">
-      <span class="case-idx">07 / C++ · reinforcement learning</span>
       <h2>NN from scratch</h2>
       <p class="section-lede">A neural network with no framework behind it — layers, forward pass, backpropagation — plus an agent that learns to play Atari through the Arcade Learning Environment bundled in the repository.</p>
     </div>
     <figure class="stills">
       <img src="assets/img/projects/nn-from-scratch.png" alt="Training and test mean squared error over 150 epochs" width="800" height="600" loading="lazy">
     </figure>
+    <div class="tags"><span class="tag">C++</span><span class="tag">CMake</span><span class="tag">backpropagation</span><span class="tag">Arcade Learning Environment</span></div>
     <ul class="case-notes">
       <li>Compiles with nothing but a C++ compiler: <code>g++ main.cpp -o main -std=c++2a</code>.</li>
       <li>The agent links against the bundled ALE and SDL and runs an Atari ROM directly: <code>./m rom/assault.bin</code>.</li>
       <li>Training and test mean squared error are plotted per epoch in the repository — the curves are its own runs, not a figure borrowed from a paper.</li>
     </ul>
-    <div class="tags"><span class="tag">C++</span><span class="tag">CMake</span><span class="tag">backpropagation</span><span class="tag">Arcade Learning Environment</span></div>
     <p class="mono case-foot">Last commit 23 Jan 2021 · <a href="https://github.com/Visn0/NN_from_scratch" target="_blank" rel="noopener">Repository &rarr;</a></p>
   </article>
 
