@@ -276,6 +276,12 @@ img, video, svg { max-width: 100%; height: auto; display: block; }
 .btn:hover { color: var(--ink); background: var(--bg-elev-2); border-color: var(--ink-faint); }
 .btn--primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); font-weight: 500; }
 .btn--primary:hover { background: color-mix(in srgb, var(--accent) 86%, white); color: var(--accent-ink); border-color: var(--accent); }
+.btn--linkedin { background: #0a66c2; border-color: #0a66c2; color: #fff; font-weight: 500; }
+.btn--linkedin:hover { background: #0858a6; border-color: #0858a6; color: #fff; }
+.btn--github { background: #24272c; border-color: #34383e; color: var(--ink); }
+.btn--github:hover { background: #2d3137; border-color: #41464d; color: var(--ink); }
+[data-theme="light"] .btn--github { background: #e6e6e2; border-color: #d2d2cd; color: var(--ink); }
+[data-theme="light"] .btn--github:hover { background: #dcdcd8; border-color: #c4c4be; }
 .btn svg { width: 1rem; height: 1rem; }
 
 /* --------------------------------------------------------------- sections */
@@ -414,6 +420,24 @@ figcaption { font-family: var(--font-mono); font-size: var(--step--1); color: va
 }
 .video-play:hover { background: rgba(6, 7, 10, 0.34); }
 .video-cap { font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink-faint); }
+
+/* competitions — one row each: when and what on the left, evidence on the right */
+.comp-list { display: grid; gap: var(--sp-6); }
+.comp-row {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(10rem, 15rem);
+  gap: var(--sp-5); align-items: start;
+  border-top: 1px solid var(--line); padding-top: var(--sp-5);
+}
+.comp-row:first-child { border-top: 0; padding-top: 0; }
+.comp-row:not(:has(.comp-media)) { grid-template-columns: minmax(0, 46rem); }
+.comp-date { font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink); margin: 0 0 var(--sp-1); }
+.comp-date span { color: var(--ink-faint); }
+.comp-row h3 { font-size: var(--step-0); margin-bottom: var(--sp-2); }
+.comp-row p { color: var(--ink-dim); font-size: var(--step-0); max-width: 42rem; }
+.comp-media { margin: 0; display: grid; gap: var(--sp-3); }
+.comp-media img { border: 1px solid var(--line); border-radius: var(--radius); }
+.comp-media .video-pair { grid-template-columns: 1fr; margin: 0; gap: var(--sp-3); }
+@media (max-width: 52rem) { .comp-row, .comp-row:not(:has(.comp-media)) { grid-template-columns: minmax(0, 1fr); } }
 
 /* ------------------------------------------------------------- contact */
 
