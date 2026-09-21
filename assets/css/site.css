@@ -31,8 +31,8 @@
   --step-0:  clamp(0.95rem, 0.92rem + 0.15vw, 1.02rem);
   --step-1:  clamp(1.1rem, 1.05rem + 0.3vw, 1.25rem);
   --step-2:  clamp(1.35rem, 1.2rem + 0.7vw, 1.7rem);
-  --step-3:  clamp(1.75rem, 1.45rem + 1.5vw, 2.6rem);
-  --step-4:  clamp(2.3rem, 1.6rem + 3.4vw, 4.4rem);
+  --step-3:  clamp(1.55rem, 1.3rem + 1.2vw, 2.1rem);
+  --step-4:  clamp(1.95rem, 1.4rem + 2.4vw, 3.2rem);
 
   /* Space */
   --sp-1: 0.25rem;
@@ -40,10 +40,10 @@
   --sp-3: 0.75rem;
   --sp-4: 1rem;
   --sp-5: 1.5rem;
-  --sp-6: 2rem;
-  --sp-7: 3rem;
-  --sp-8: 4.5rem;
-  --sp-9: 7rem;
+  --sp-6: 1.5rem;
+  --sp-7: 2rem;
+  --sp-8: 2.75rem;
+  --sp-9: 3.5rem;
 
   --shell: 74rem;
   --radius: 3px;
@@ -148,9 +148,9 @@ img, video, svg { max-width: 100%; height: auto; display: block; }
 
 .rule { border: 0; border-top: 1px solid var(--line); margin: 0; }
 
-.section { padding-block: var(--sp-8); border-top: 1px solid var(--line); }
+.section { padding-block: var(--sp-6); }
 .section:first-of-type { border-top: 0; }
-.section-head { display: grid; gap: var(--sp-2); margin-bottom: var(--sp-6); }
+.section-head { display: grid; gap: var(--sp-2); margin-bottom: var(--sp-4); }
 @media (min-width: 56rem) {
   .section-head { grid-template-columns: 14rem 1fr; gap: var(--sp-6); align-items: baseline; }
   .section-head .eyebrow { margin: 0; }
@@ -194,10 +194,10 @@ img, video, svg { max-width: 100%; height: auto; display: block; }
 
 /* -------------------------------------------------- home hero: photo + bio */
 
-.hero-simple { padding-block: var(--sp-7) var(--sp-6); }
+.hero-simple { padding-block: var(--sp-5); }
 .hero-simple .hero-inner { display: grid; gap: var(--sp-6); }
 @media (min-width: 56rem) {
-  .hero-simple .hero-inner { grid-template-columns: minmax(14rem, 19rem) minmax(0, 1fr); gap: var(--sp-8); align-items: start; }
+  .hero-simple .hero-inner { grid-template-columns: minmax(14rem, 19rem) minmax(0, 1fr); gap: var(--sp-7); align-items: start; }
 }
 .portrait {
   margin: 0;
@@ -205,10 +205,14 @@ img, video, svg { max-width: 100%; height: auto; display: block; }
   border-radius: var(--radius-lg);
   overflow: hidden;
   background: var(--bg-elev);
-  aspect-ratio: 3 / 4;
-  width: min(100%, 19rem);
+  aspect-ratio: 1 / 1;
+  width: min(100%, 16rem);
 }
 .portrait img { width: 100%; height: 100%; object-fit: cover; object-position: center 18%; }
+/* the photo column: portrait with the LinkedIn / GitHub buttons right under it */
+.hero-photo { display: grid; gap: var(--sp-3); max-width: 16rem; }
+.hero-photo .cta-row.hero-social { margin-top: 0; gap: var(--sp-2); }
+.hero-social .btn { flex: 1; justify-content: center; padding-inline: var(--sp-3); }
 .hero-simple h1 { font-size: var(--step-4); margin-bottom: var(--sp-3); }
 .hero-simple .hero-role { font-family: var(--font-mono); font-size: var(--step--1); text-transform: uppercase; letter-spacing: 0.14em; color: var(--ink-faint); margin: 0 0 var(--sp-5); }
 .hero-simple .hero-bio { font-size: var(--step-1); color: var(--ink-dim); max-width: 40rem; }
@@ -318,7 +322,7 @@ img, video, svg { max-width: 100%; height: auto; display: block; }
 
 /* experience — a precise two-column ledger */
 .timeline { display: grid; }
-.job { display: grid; gap: var(--sp-2) var(--sp-6); padding-block: var(--sp-5); border-top: 1px solid var(--line); }
+.job { display: grid; gap: var(--sp-2) var(--sp-5); padding-block: var(--sp-4); border-top: 1px solid var(--line); }
 .job:first-child { border-top: 0; padding-top: 0; }
 @media (min-width: 60rem) {
   .job { grid-template-columns: 16rem minmax(0, 1fr); }
@@ -345,7 +349,7 @@ img, video, svg { max-width: 100%; height: auto; display: block; }
 /* awards / education lists */
 .panel-grid { display: grid; gap: var(--sp-6); }
 @media (min-width: 60rem) { .panel-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-7); } }
-.entry { padding-block: var(--sp-4); border-top: 1px solid var(--line); }
+.entry { padding-block: var(--sp-3); border-top: 1px solid var(--line); }
 .entry:first-of-type { border-top: 0; }
 .entry-head { display: flex; flex-wrap: wrap; gap: var(--sp-2) var(--sp-4); align-items: baseline; justify-content: space-between; }
 .entry h4 { font-size: var(--step-1); }
@@ -372,7 +376,7 @@ figcaption { font-family: var(--font-mono); font-size: var(--step--1); color: va
   padding: var(--sp-4); overflow-x: auto; margin: 0 0 var(--sp-5);
 }
 .prose pre code { background: none; border: 0; padding: 0; }
-.page-head { padding-block: var(--sp-7) var(--sp-5); }
+.page-head { padding-block: var(--sp-6) var(--sp-4); }
 .page-head h1 { font-size: var(--step-3); margin-bottom: var(--sp-4); }
 .page-head p { color: var(--ink-dim); max-width: 44rem; }
 
@@ -441,7 +445,7 @@ figcaption { font-family: var(--font-mono); font-size: var(--step--1); color: va
 
 /* ------------------------------------------------------------- contact */
 
-.contact { border-top: 1px solid var(--line); padding-block: var(--sp-8); }
+.contact { border-top: 1px solid var(--line); padding-block: var(--sp-7); }
 .contact-grid { display: grid; gap: var(--sp-6); }
 @media (min-width: 60rem) { .contact-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--sp-8); } }
 .contact h2:not(.eyebrow) { font-size: var(--step-3); margin-bottom: var(--sp-4); }
