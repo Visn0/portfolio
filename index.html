@@ -130,11 +130,14 @@
         </article>
 
         <article class="card">
-          <p class="card-kicker">02 · Go · Vue · DDD</p>
-          <h3>GoChess</h3>
-          <p>A chess server and client built to practise domain-driven design: matches, move validation and check detection live in a hexagonal Go domain layer behind WebSockets, with a Vue 3 board on top. Reading the domain tests is the fastest way into this one.</p>
-          <div class="tags"><span class="tag">Go</span><span class="tag">goFiber</span><span class="tag">Vue 3</span><span class="tag">WebSockets</span><span class="tag">DDD</span></div>
-          <p class="card-foot"><span class="card-date">Last commit 30 Apr 2023</span><a href="https://github.com/Visn0/goChess" target="_blank" rel="noopener">Repo &rarr;</a></p>
+          <figure class="card-media card-media--contain">
+            <img src="assets/img/projects/chess.png" alt="The chess board mid-game: the last move highlighted in yellow and the selected piece's legal destinations circled." width="1200" height="1200" loading="lazy">
+          </figure>
+          <p class="card-kicker">02 · Go · JavaScript · WebSockets</p>
+          <h3>Chess</h3>
+          <p>A two-player chess game: a vanilla-JavaScript front end talking to a Go backend over WebSockets. My part was the rules — check detection, filtering every legal move down to the ones that answer a check, castling (and cancelling it when the path is attacked), promotion and en passant. Twenty-five of the repository's 128 commits.</p>
+          <div class="tags"><span class="tag">JavaScript</span><span class="tag">Go</span><span class="tag">Echo</span><span class="tag">WebSockets</span></div>
+          <p class="card-foot"><span class="card-date">Last commit 3 Sep 2021</span><a href="https://github.com/carlosarismendi/chess" target="_blank" rel="noopener">Repo &rarr;</a><span class="card-date">with C. Arismendi Sánchez</span></p>
         </article>
 
         <article class="card">

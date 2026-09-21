@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Project deck — Anton Chernysh, Site Reliability Engineer</title>
-<meta name="description" content="Eight slides on reliability engineering and seven repositories: a Rust and WebAssembly protein analyser, a Go chess server built on a domain model, five path-finding algorithms, a Z80 assembly game, and the numbers behind six years in production.">
+<meta name="description" content="Eight slides on reliability engineering and seven repositories: a Rust and WebAssembly protein analyser, a chess move-legality engine in JavaScript with a Go backend, five path-finding algorithms, a Z80 assembly game, and the numbers behind six years in production.">
 <meta name="author" content="Anton Chernysh Kornishuk">
 <link rel="canonical" href="https://visn0.github.io/portfolio/presentation.html">
 <meta property="og:type" content="article">
@@ -103,7 +103,7 @@
       <div class="slide-cols">
         <ul>
           <li><strong>Protein with Rust</strong> — Rust → WebAssembly, fetched live, 3D structure · 2026</li>
-          <li><strong>GoChess</strong> — Go and Vue behind a domain model, over WebSockets · 2023</li>
+          <li><strong>Chess</strong> — a move-legality engine in vanilla JavaScript, Go backend, with Carlos Arismendi Sánchez · 2021</li>
           <li><strong>Path Finding Visualizer</strong> — five search algorithms in TypeScript · 2021</li>
           <li><strong>goBinance</strong> — Go, live market-data streams, arbitrage maths · 2021</li>
         </ul>
@@ -114,7 +114,7 @@
           <li>Everything else lives at github.com/Visn0</li>
         </ul>
       </div>
-      <p>The point is the spread rather than the count: an assembly game, a datathon notebook, a Go domain model, a C++ neural network and a Rust tool that runs in a browser. Each one has its last-commit date on the portfolio, because a repository that stopped two years ago should say so.</p>
+      <p>The point is the spread rather than the count: an assembly game, a datathon notebook, a chess rules engine in vanilla JavaScript, a C++ neural network and a Rust tool that runs in a browser. Each one has its last-commit date on the portfolio, because a repository that stopped two years ago should say so.</p>
     </section>
 
     <!-- 9 -->
@@ -152,7 +152,7 @@
   <p data-note hidden><b>Slide 3 — outcomes</b>30 % off mean time to detect at DFINITY through observability; 60 % fewer tickets from automated review and internal AI workflows; 6 billion requests a day at Webbeds after moving PHP to Go for 4× throughput. Pick the one closest to the role and go deep on it.</p>
   <p data-note hidden><b>Slide 4 — video</b>Let it play: identifier in, UniProt record back, analysis in WebAssembly, 3D cartoon drawn. Point out that nothing is bundled or faked — every record is fetched live. If time is short, skip to slide 5 after ten seconds.</p>
   <p data-note hidden><b>Slide 5 — how it is built</b>The architectural point is the split: TypeScript does the network, Rust does the thinking. Then the deployment story — one Worker, CI that reads the live URL back and compares the wasm binary against what it uploaded.</p>
-  <p data-note hidden><b>Slide 6 — the repositories</b>Pick two and go deep rather than listing all seven: the Z80 game if the role values fundamentals, the Go domain model if it is a product team, the Rust tool if it is platform work. Be straight that the dates are old on the university work — they are supposed to be.</p>
+  <p data-note hidden><b>Slide 6 — the repositories</b>Pick two and go deep rather than listing all seven: the Z80 game if the role values fundamentals, the chess engine if it is a product team (say plainly that it was a two-person project with a friend), the Rust tool if it is platform work. Be straight that the dates are old on the university work — they are supposed to be.</p>
   <p data-note hidden><b>Slide 7 — how I work</b>These are the values, said once, without decoration. The second rule is the one that tends to land: boring-looking failures are the expensive ones.</p>
   <p data-note hidden><b>Slide 8 — contact</b>Leave this up. LinkedIn is the fastest route; the portfolio links the CV, the write-ups and the recording.</p>
 </div>

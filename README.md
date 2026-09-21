@@ -10,7 +10,7 @@ Live: <https://visn0.github.io/portfolio/>
 | File | What it is |
 | --- | --- |
 | `index.html` | Home — hero, profile panel, selected work (with the recorded demo), experience ledger, toolkit, recognition, education, contact |
-| `projects.html` | Seven repository write-ups (Rust/WebAssembly protein analyser, GoChess, path-finding visualiser, goBinance, UniversityHack, Cell Block, NN from scratch), each with its last-commit date and media. |
+| `projects.html` | Seven repository write-ups (Rust/WebAssembly protein analyser, Chess, path-finding visualiser, goBinance, UniversityHack, Cell Block, NN from scratch), each with its last-commit date and media. |
 | `presentation.html` | Ten-slide deck about the reliability practice and the projects. Arrow keys navigate, `N` toggles speaker notes, `F` fullscreen, `P` print |
 | `resume.html` | The CV data as a print-ready page — `Ctrl/Cmd + P` gives a two-page A4 PDF |
 | `404.html` | Not-found page |
