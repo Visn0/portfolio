@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project deck — Anton Chernysh, Site Reliability Engineer</title>
+<meta name="description" content="Ten slides on reliability engineering and four projects: a Rust/WebAssembly protein analyser, KV-cache compression for vLLM, an agent-driven cloud-lab simulation and a seasonal meal planner.">
+<meta name="author" content="Anton Chernysh Kornishuk">
+<link rel="canonical" href="https://visn0.github.io/portfolio/presentation.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Project deck — Anton Chernysh">
+<meta property="og:description" content="Reliability practice and four projects in ten slides.">
+<meta property="og:image" content="https://visn0.github.io/portfolio/assets/img/og-card.png">
+
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/fonts.css">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body class="deck-body">
+
+<div class="deck-stage">
+  <div class="slides" data-deck aria-live="polite">
+
+    <!-- 1 -->
+    <section class="slide" data-active="true">
+      <p class="slide-kicker">Projects &amp; practice · 2026</p>
+      <h2 class="big">Anton Chernysh</h2>
+      <p style="font-size: clamp(1rem, 2vw, 1.9rem); color: var(--ink);">Site Reliability Engineer — Zurich, Switzerland</p>
+      <div class="stat-strip">
+        <div><b>SLOs &amp; error budgets</b>DFINITY</div>
+        <div><b>Kubernetes &amp; IaC</b>Terraform · Pulumi</div>
+        <div><b>Go · Rust · Python</b>production code, not slides</div>
+      </div>
+      <p class="mono" style="color: var(--ink-faint);">github.com/Visn0 · linkedin.com/in/anton-chernysh · visn0.github.io/portfolio</p>
+    </section>
+
+    <!-- 2 -->
+    <section class="slide">
+      <p class="slide-kicker">01 — The practice</p>
+      <h2>What I actually do all day</h2>
+      <div class="slide-cols">
+        <ul>
+          <li><strong>Agree what "working" means.</strong> An SLI that reflects the user, an SLO with a target people accept, an error budget that makes the trade-off visible.</li>
+          <li><strong>Instrument before optimising.</strong> Logs, metrics and traces that answer a question. If an alert cannot name an action, it is noise.</li>
+          <li><strong>Fix the class, not the instance.</strong> Postmortems that end in a change to the system, not a note to be careful.</li>
+        </ul>
+        <ul>
+          <li><strong>Delete toil.</strong> Automated review, self-service pipelines, agents doing the repetitive parts.</li>
+          <li><strong>Make capacity boring.</strong> Load tests before launches, headroom measured rather than hoped for.</li>
+          <li><strong>Own the pager.</strong> 24/7 on-call for regulated financial infrastructure, all SLAs met.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3 -->
+    <section class="slide">
+      <p class="slide-kicker">02 — Outcomes</p>
+      <h2>What that produced</h2>
+      <div class="stat-strip">
+        <div><b>−30 %</b>MTTD, DFINITY</div>
+        <div><b>−60 %</b>support tickets, DFINITY</div>
+        <div><b>6 B/day</b>requests served, Webbeds</div>
+        <div><b>4×</b>throughput after PHP → Go</div>
+        <div><b>24/7</b>on-call, regulated finance</div>
+      </div>
+      <p>Caffeine.ai built and scaled on a decentralised network; Terraform, Kubernetes and Helmfiles for crypto infrastructure at Taurus; AI-driven pre-caching and an MFA framework that cut fraud at Webbeds.</p>
+    </section>
+
+    <!-- 4 -->
+    <section class="slide">
+      <p class="slide-kicker">03 — Featured project</p>
+      <h2>A protein analyser in the browser</h2>
+      <p>A protein analyser that runs entirely in the browser. Live records from UniProt, Ensembl and RCSB PDB; all the computing compiled from Rust to WebAssembly; no backend on the critical path.</p>
+      <video controls preload="none" playsinline muted data-autoplay-slide
+             poster="assets/img/protein-structure-3d.jpg"
+             aria-label="Screen recording of the analyser: entering P04637, the UniProt record loading, analysis, and the 3D structure being drawn.">
+        <source src="assets/video/protein-analysis-demo.webm" type="video/webm">
+        <source src="assets/video/protein-analysis-demo.mp4" type="video/mp4">
+      </video>
+    </section>
+
+    <!-- 5 -->
+    <section class="slide">
+      <p class="slide-kicker">03 — Featured project, continued</p>
+      <h2>How it is built</h2>
+      <div class="slide-cols">
+        <ul>
+          <li><strong>Network in TypeScript, compute in Rust.</strong> WebAssembly cannot fetch cleanly, so TypeScript performs the requests and the Rust core decides which URLs to call and how to read them — testable logic, still Rust.</li>
+          <li><strong>Two renderers.</strong> WebGL when the browser offers it; the same mesh, lighting and depth cueing rasterised on the CPU when it does not.</li>
+        </ul>
+        <ul>
+          <li><strong>Tests without a browser.</strong> Rust domain tests, headless Node checks over the ABI and 3D maths, plus a Playwright suite against the built app.</li>
+          <li><strong>One <code>wrangler deploy</code>.</strong> A Cloudflare Worker serves the bundle and answers <code>/api/*</code>. CI deploys only after every job passes, then reads the live URL back to confirm the pages and the wasm binary.</li>
+          <li><strong>Honest failures.</strong> Unreachable API, unparseable file, DNA input — each gets a card that names the problem.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 6 -->
+    <section class="slide">
+      <p class="slide-kicker">04 — Applied research</p>
+      <h2>TurboQuant: half the KV cache, no slower</h2>
+      <p>Implementing TurboQuant (ICLR 2026) inside vLLM: 3-bit keys, 2-bit values, a full-precision ring buffer for recent tokens, and only the full-attention layers compressed.</p>
+      <div class="stat-strip">
+        <div><b>30.9 %</b>KV memory saved per GPU</div>
+        <div><b>914,144</b>max tokens, up from 457,072</div>
+        <div><b>+3.1 %</b>decode tok/s at 30k context</div>
+        <div><b>+5.7 %</b>prefill tok/s at 30k context</div>
+        <div><b>8 × 3090</b>and one 5090, measured</div>
+      </div>
+      <p>The interesting part was not the compression — it was updating memory accounting and the context-limit calculation so the scheduler stops over-committing the VRAM it thinks it still has.</p>
+    </section>
+
+    <!-- 7 -->
+    <section class="slide">
+      <p class="slide-kicker">05 — Platform simulation</p>
+      <h2>A cloud lab in one command</h2>
+      <pre class="mono" style="font-size: clamp(0.5rem, 0.85vw, 0.95rem); line-height: 1.5; background: var(--bg-elev-2); border: 1px solid var(--line); border-radius: 3px; padding: 0.9rem; overflow-x: auto; color: var(--ink-dim);">frontend (Next.js) ─► service (mock Foundry API + MCP) ─► db (Postgres)
+   submit / poll          │  on submit: enqueue              ▲
+                          └─► redis ─► worker (arq) ─────────┘
+opencode-agent ─ designs a binder, submits, reads results, hunts bugs — over MCP</pre>
+      <div class="slide-cols">
+        <ul>
+          <li><strong>demo mode:</strong> the agent designs a binder and drives the loop end to end.</li>
+          <li><strong>evaluate mode:</strong> the agent beta-tests the API's AI-readiness and ends with a PASS/FAIL verdict.</li>
+        </ul>
+        <ul>
+          <li>Three CI workflows, all commenting on the PR: unit tests, AI code review, AI beta tester.</li>
+          <li>MCP tools mirror the vendor SDK, so an agent that knows the real API transfers 1:1.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 8 -->
+    <section class="slide">
+      <p class="slide-kicker">06 — Small tool, weekly use</p>
+      <h2>Meal planning from the winter larder</h2>
+      <div class="slide-cols">
+        <ul>
+          <li>Daily caloric needs from a personal profile — age, sex, weight, height, activity.</li>
+          <li>Balanced weekly plans from a curated Swiss winter ingredient database with macro ranges.</li>
+        </ul>
+        <ul>
+          <li>One consolidated shopping list for the week.</li>
+          <li>Optional FLUX.1-schnell meal images; no token, feature quietly off, app still fine.</li>
+          <li>Flask, Python, a config surface — my smallest full end-to-end service.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 9 -->
+    <section class="slide">
+      <p class="slide-kicker">07 — How I work</p>
+      <h2>Four rules I keep coming back to</h2>
+      <ul>
+        <li><strong>Measure first.</strong> “If you cannot measure it, you cannot improve it.” A number you cannot point at is an opinion.</li>
+        <li><strong>Make failures honest.</strong> The worst incident is the one that looks like nothing happening. Systems should say what broke, in the interface, not in a dashboard nobody opens.</li>
+        <li><strong>Automate the boring, not the judgement.</strong> Toil removal is easy to justify; incident response stays human, with machines doing the searching.</li>
+        <li><strong>Leave the system better documented than you found it.</strong> Reliability is mostly what survives the next person's Tuesday.</li>
+      </ul>
+    </section>
+
+    <!-- 10 -->
+    <section class="slide">
+      <p class="slide-kicker">08 — Get in touch</p>
+      <h2 class="big">Let's talk reliability</h2>
+      <p>Zurich-based. Open to conversations about SRE, platform engineering and observability-heavy systems.</p>
+      <div class="stat-strip">
+        <div><b>LinkedIn</b>in/anton-chernysh</div>
+        <div><b>GitHub</b>github.com/Visn0</div>
+        <div><b>Portfolio</b>visn0.github.io/portfolio</div>
+        <div><b>CV</b>two pages, A4</div>
+      </div>
+      <p class="mono" style="color: var(--ink-faint);">CV, project write-ups and the recorded demo are all linked from the portfolio home page.</p>
+    </section>
+
+  </div>
+</div>
+
+<div class="notes" id="deck-notes" data-open="false" aria-live="off">
+  <p data-note><b>Slide 1 — title</b>Name, role, city, three anchors: SLO work at DFINITY, IaC, and that I write production code. Thirty seconds, then move.</p>
+  <p data-note hidden><b>Slide 2 — the practice</b>The loop I run: define what working means, instrument, fix the class not the instance, delete toil, make capacity boring, own the pager. This is the substance behind the numbers on the next slide.</p>
+  <p data-note hidden><b>Slide 3 — outcomes</b>30 % off mean time to detect at DFINITY through observability; 60 % fewer tickets from automated review and internal AI workflows; 6 billion requests a day at Webbeds after moving PHP to Go for 4× throughput. Pick the one closest to the role and go deep on it.</p>
+  <p data-note hidden><b>Slide 4 — video</b>Let it play: identifier in, UniProt record back, analysis in WebAssembly, 3D cartoon drawn. Point out that nothing is bundled or faked — every record is fetched live. If time is short, skip to slide 5 after ten seconds.</p>
+  <p data-note hidden><b>Slide 5 — how it is built</b>The architectural point is the split: TypeScript does the network, Rust does the thinking. Then the deployment story — one Worker, CI that reads the live URL back and compares the wasm binary against what it uploaded.</p>
+  <p data-note hidden><b>Slide 6 — TurboQuant</b>Real hardware, real numbers: 30.9 % KV memory saved with 3-bit keys and 2-bit values, max context doubled to 914k tokens, decode slightly faster rather than slower. The hard part was memory accounting, not the maths.</p>
+  <p data-note hidden><b>Slide 7 — cloud lab</b>This is about agents and CI, not biology: a foundry API simulated faithfully enough that an agent can do the job over MCP, and the same interface used to evaluate whether the API is AI-ready. Three CI workflows, all posting to the PR.</p>
+  <p data-note hidden><b>Slide 8 — meal planner</b>Say it plainly: small app, used weekly, useful because it is honest about a missing API token. Shows end-to-end delivery at a smaller scale.</p>
+  <p data-note hidden><b>Slide 9 — how I work</b>These are the values, said once, without decoration. The second rule is the one that tends to land: boring-looking failures are the expensive ones.</p>
+  <p data-note hidden><b>Slide 10 — contact</b>Leave this up. LinkedIn is the fastest route; the portfolio links the CV, the write-ups and the recording.</p>
+</div>
+
+<div class="deck-bar">
+  <a class="mono" href="index.html" style="text-decoration:none;">← Portfolio</a>
+  <button class="btn" id="deck-prev" type="button" aria-label="Previous slide">Prev</button>
+  <button class="btn" id="deck-next" type="button" aria-label="Next slide">Next</button>
+  <span class="mono" id="deck-counter">01 / 10</span>
+  <div class="deck-progress" aria-hidden="true"><span id="deck-progress"></span></div>
+  <button class="btn" id="deck-notes-toggle" type="button" aria-expanded="false" title="Speaker notes (N)">Notes</button>
+  <span class="mono" style="color: var(--ink-faint);">← → · F fullscreen · P print</span>
+</div>
+
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>

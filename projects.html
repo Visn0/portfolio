@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Projects — Anton Chernysh</title>
+<meta name="description" content="Four projects in detail: a Rust/WebAssembly protein analyser, KV-cache compression for vLLM, a simulated protein-design foundry driven by agents over MCP, and a seasonal meal planner.">
+<meta name="author" content="Anton Chernysh Kornishuk">
+<link rel="canonical" href="https://visn0.github.io/portfolio/projects.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Projects — Anton Chernysh">
+<meta property="og:description" content="Rust/WebAssembly protein analyser, KV-cache compression for vLLM, an agent-driven cloud-lab simulation, and a seasonal meal planner.">
+<meta property="og:url" content="https://visn0.github.io/portfolio/projects.html">
+<meta property="og:image" content="https://visn0.github.io/portfolio/assets/img/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/fonts.css">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="shell">
+    <a class="brand" href="index.html">
+      Anton Chernysh <span class="brand-dot" aria-hidden="true">/</span>
+      <span class="brand-meta">SRE · Zurich</span>
+    </a>
+    <button class="icon-btn menu-btn" id="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+    <nav class="nav" id="primary-nav" data-open="false" aria-label="Primary">
+      <a href="index.html#work">Work</a>
+      <a href="index.html#experience">Experience</a>
+      <a href="projects.html" aria-current="page">Projects</a>
+      <a href="presentation.html">Deck</a>
+      <a href="resume.html">CV</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <button class="icon-btn" id="theme-toggle" type="button" aria-label="Switch to light theme" title="Switch theme">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="main" class="shell">
+  <div class="page-head">
+    <p class="eyebrow">Projects</p>
+    <h1>Four builds, the numbers they produced</h1>
+    <p>
+      The featured one you can open and use right now; the rest are written up with the numbers they
+      produced. Where a number appears it came off a benchmark run or a test suite — none of it is
+      estimated.
+    </p>
+    <div class="cta-row">
+      <a class="btn btn--primary" href="presentation.html">The deck walks through all four</a>
+      <a class="btn" href="index.html#work">Back to the summary</a>
+    </div>
+  </div>
+
+  <!-- ============================================================ protein -->
+  <article class="case" id="protein">
+    <div class="case-head">
+      <span class="case-idx">01 / protein analysis</span>
+      <h2>A protein analyser with no server on the critical path</h2>
+      <p class="section-lede">
+        Paste a sequence, a UniProt accession, an Ensembl protein ID, or import a FASTA, GenBank, GFF3
+        or PDB file. You get composition, molecular weight, isoelectric point, aromaticity, a feature map,
+        a hydropathy profile and — when the record has a structure — an interactive 3D cartoon.
+      </p>
+    </div>
+
+    <figure>
+      <video controls preload="metadata" playsinline
+             poster="assets/img/protein-structure-3d.jpg"
+             aria-label="Screen recording: the P04637 accession is entered, the record is fetched from UniProt, the analysis runs, and the 3D cartoon is drawn and rotated.">
+        <source src="assets/video/protein-analysis-demo.webm" type="video/webm">
+        <source src="assets/video/protein-analysis-demo.mp4" type="video/mp4">
+        Your browser cannot play this video. <a href="assets/video/protein-analysis-demo.mp4">Download it</a>.
+      </video>
+      <figcaption>Recorded walkthrough — 26 seconds, one lookup, nothing cut.</figcaption>
+    </figure>
+
+    <div class="case-grid" style="margin-top: var(--sp-6)">
+      <div class="prose">
+        <h3>The design decision underneath everything</h3>
+        <p>
+          Browser WebAssembly cannot issue HTTP requests cleanly, so the split is <strong>network in
+          TypeScript, compute in Rust</strong>. But the Rust core is not a parsing helper: it decides which
+          URLs to request and how to interpret the responses, so the interesting logic is still testable
+          Rust with no browser in sight. Because UniProt and Ensembl both answer cross-origin requests,
+          the browser calls them directly — open the app and it works, with nothing to deploy on the path
+          that matters.
+        </p>
+
+        <h3>Honest failures, and one deliberate refusal</h3>
+        <ul>
+          <li>An unreachable API, an unparseable file, a DNA sequence or an identifier outside the protein
+              namespaces each produce a card that names the problem, rather than a spinner that never ends.</li>
+          <li>Nucleotide input is refused with an explanation rather than quietly translated — this is a
+              protein tool and it says so.</li>
+          <li>Annotations are read from the coordinate file it already downloaded: declared sites, named
+              mutations, bound molecules, modified residues, chain ends and disulfides as a line between
+              their two sulfurs. No second request. A label whose residue is behind the protein is hidden
+              instead of drawn through it.</li>
+        </ul>
+
+        <h3>Two renderers, so hardware acceleration is optional</h3>
+        <p>
+          The structure view extrudes a smoothed backbone as a tube — round and thick for helices, wide and
+          flat for strands, thin for loops, coloured by secondary structure. WebGL is used when the browser
+          offers it; the same mesh, lighting and depth cueing are rasterised on the CPU when it does not,
+          so a browser with hardware acceleration switched off still gets a picture.
+        </p>
+
+        <h3>Testing and deployment</h3>
+        <ul>
+          <li>Rust domain tests for parsers, statistics, properties, identifiers and provider planning; a
+              separate suite for the 3D library.</li>
+          <li>Headless Node checks over the WebAssembly ABI, the API layer, 3D maths and the built bundle —
+              no browser, no network.</li>
+          <li>A Playwright suite drives the built app in real Chromium.</li>
+          <li>One <code>wrangler deploy</code>: a Cloudflare Worker serves the static bundle and answers
+              <code>/api/*</code> itself, so the free plan is enough. CI runs the core, worker, library and
+              web jobs before it deploys, then reads the deployed URL back to confirm the three pages and
+              the WebAssembly binary match what was uploaded.</li>
+        </ul>
+
+        <h3>Not built yet</h3>
+        <p>
+          BLAST. The relay for it exists and is tested, but no control in the interface calls it — so it is
+          not on this page as a feature.
+        </p>
+      </div>
+
+      <aside class="case-aside">
+        <dl>
+          <div class="row"><dt>Runs</dt><dd>Entirely in the browser</dd></div>
+          <div class="row"><dt>Compute</dt><dd>Rust compiled to WebAssembly</dd></div>
+          <div class="row"><dt>Data sources</dt><dd>UniProt · Ensembl · RCSB PDB (live)</dd></div>
+          <div class="row"><dt>Backend on the critical path</dt><dd>None</dd></div>
+          <div class="row"><dt>Also deployed</dt><dd>An optional Worker: KV cache + BLAST relay</dd></div>
+          <div class="row"><dt>Tests</dt><dd>Rust unit · headless Node · Playwright</dd></div>
+          <div class="row"><dt>Licence</dt><dd>MIT</dd></div>
+        </dl>
+      </aside>
+    </div>
+
+    <figure style="margin-top: var(--sp-6)">
+      <div class="stills" style="margin-top:0">
+        <img src="assets/img/protein-analysis.jpg" alt="The analyser's results view: length, molecular weight, isoelectric point, aromatic residues, amino-acid composition, sequence map and hydropathy profile." loading="lazy" width="1280" height="800">
+        <img src="assets/img/protein-features.jpg" alt="The analyser's feature map showing binding sites, chains, motifs and regions across the sequence." loading="lazy" width="1280" height="800">
+        <img src="assets/img/protein-structure-3d.jpg" alt="The analyser's 3D structure view for PDB entry 1TUP with annotated binding sites." loading="lazy" width="1280" height="800">
+      </div>
+      <figcaption>Screenshots from the recording above: results and composition, the feature map, and the 3D view of 1TUP with its declared binding sites.</figcaption>
+    </figure>
+  </article>
+
+  <!-- ============================================================== kv cache -->
+  <article class="case" id="kv-cache">
+    <div class="case-head">
+      <span class="case-idx">02 / KV-cache compression</span>
+      <h2>Cutting the KV cache in half without losing the model</h2>
+      <p class="section-lede">
+        An implementation of TurboQuant (<a href="https://arxiv.org/abs/2504.19874" target="_blank" rel="noopener">arXiv:2504.19874</a>,
+        ICLR 2026) integrated into vLLM and benchmarked on real hardware — a single RTX 5090 running a dense
+        27B model, and eight RTX 3090s running a pruned mixture-of-experts model with 205 experts.
+      </p>
+    </div>
+
+    <div class="case-grid">
+      <div class="prose">
+        <h3>The idea, in one paragraph</h3>
+        <p>
+          Keys are compressed with a <em>(b−1)</em>-bit MSE quantiser plus a one-bit QJL residual; values use
+          grouped quantisation with per-group scales and zeros. The most recent tokens stay uncompressed in a
+          ring buffer, so decode reads compressed history plus a full-precision recent window. Only the
+          full-attention layers are compressed — the linear-attention layers are left alone.
+        </p>
+
+        <h3>What it bought, on 8 × RTX 3090</h3>
+        <table class="table">
+          <caption>KV cache per GPU, baseline bf16 vs TurboQuant, MoE model at 0.92 GPU utilisation</caption>
+          <thead>
+            <tr><th>Context</th><th class="num">Baseline</th><th class="num">TurboQuant</th><th class="num">Saved</th><th class="num">%</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>8,000</td><td class="num">55.7 MB</td><td class="num">38.5 MB</td><td class="num"><strong>17.2 MB</strong></td><td class="num">30.9 %</td></tr>
+            <tr><td>32,000</td><td class="num">191.5 MB</td><td class="num">132.3 MB</td><td class="num"><strong>59.3 MB</strong></td><td class="num">30.9 %</td></tr>
+            <tr><td>64,000</td><td class="num">374.3 MB</td><td class="num">258.5 MB</td><td class="num"><strong>115.8 MB</strong></td><td class="num">30.9 %</td></tr>
+            <tr><td>100,000</td><td class="num">578.1 MB</td><td class="num">399.2 MB</td><td class="num"><strong>178.8 MB</strong></td><td class="num">30.9 %</td></tr>
+          </tbody>
+        </table>
+
+        <p>
+          On the 5090 the same change freed <strong>30.0 GB across four GPUs</strong> and doubled the maximum
+          token capacity from 457,072 to <strong>914,144</strong>. Prefill rose 5.7 % and decode 3.1 % at 30k
+          context — compression that also made it slightly faster, rather than a trade of speed for memory.
+          Needle-in-a-haystack retrieval held at 4/5 across every context length up to 131k in the baseline
+          run, and the one miss is the model reformatting an answer, not a retrieval failure.
+        </p>
+
+        <h3>How it is wired in</h3>
+        <ul>
+          <li>The compressed representation is described as C++ structures to add to the runtime: encoded
+              keys (packed MSE indices, packed QJL signs, residual and original norms), encoded values
+              (packed groups with scales and zeros) and a per-layer cache holding compressed history plus
+              the recent ring buffer.</li>
+          <li>The patch order is deliberately incremental: capture compressed K/V while still running baseline
+              attention, then a hybrid read path for decode only, then the full read path with quality,
+              memory and throughput measured at each step.</li>
+          <li>Memory accounting and context-limit calculation had to be updated with it — a compression
+              scheme that does not report its real footprint fools the scheduler into over-committing.</li>
+        </ul>
+
+        <h3>Status</h3>
+        <p>
+          Working and measured on my own hardware. Happy to walk through the benchmarks live.
+        </p>
+      </div>
+
+      <aside class="case-aside">
+        <dl>
+          <div class="row"><dt>Paper</dt><dd>TurboQuant, ICLR 2026</dd></div>
+          <div class="row"><dt>Integration</dt><dd>vLLM 0.18.0</dd></div>
+          <div class="row"><dt>Quantisation</dt><dd>3-bit keys · 2-bit values</dd></div>
+          <div class="row"><dt>Hardware</dt><dd>RTX 5090 · 8 × RTX 3090</dd></div>
+          <div class="row"><dt>KV saved</dt><dd>30.9 % per GPU</dd></div>
+          <div class="row"><dt>Max context</dt><dd>914,144 tokens (2.0×)</dd></div>
+          <div class="row"><dt>Decode impact</dt><dd>+3.1 % at 30k</dd></div>
+        </dl>
+      </aside>
+    </div>
+  </article>
+
+  <!-- ============================================================ cloud lab -->
+  <article class="case" id="cloud-lab">
+    <div class="case-head">
+      <span class="case-idx">03 / cloud-lab simulation</span>
+      <h2>A cloud lab you can bring up with one command</h2>
+      <p class="section-lede">
+        A self-contained simulation of a protein-design foundry API — browse a target catalogue, submit
+        binder sequences as an experiment, get a cost estimate, watch it move through lab stages, pull
+        structured results. Real wet-lab results take weeks; here a worker produces mocked but deterministic
+        results in seconds.
+      </p>
+    </div>
+
+    <div class="case-grid">
+      <div class="prose">
+        <h3>The point is the agent, not the simulation</h3>
+        <p>
+          The demo exists to show how an AI agent uses a lab API over MCP — both to do the job (design a
+          binder → submit → read results) and to find bugs in the service. Every layer maps onto the managed
+          service it stands in for, which is why the topology is not simplified:
+        </p>
+        <pre><code>frontend (Next.js) ── Vercel ──► service (mock Foundry API + MCP) ──► db (Postgres) ── Supabase
+      submit / poll / results          │  on submit: enqueue                ▲
+                                       └──► redis ──► worker (arq) ──────────┘  ── Modal (mock "wet lab")
+opencode-agent ── designs a binder &amp; hunts bugs via MCP ──► service /mcp        ── AI agent</code></pre>
+
+        <h3>What each container stands in for</h3>
+        <table class="table">
+          <caption>One <code>docker compose up</code> brings up the whole topology</caption>
+          <thead><tr><th>Container</th><th>Stands in for</th><th>Role</th></tr></thead>
+          <tbody>
+            <tr><td>service (FastAPI)</td><td>Vercel</td><td>Mock Foundry REST endpoints + MCP tools, bearer auth, enqueues lab jobs</td></tr>
+            <tr><td>db (Postgres)</td><td>Supabase</td><td>Targets, experiments, sequences, results; seeded catalogue</td></tr>
+            <tr><td>redis + worker (arq)</td><td>Modal</td><td>Advances a submitted experiment through the lab and writes mocked results</td></tr>
+            <tr><td>frontend (Next.js)</td><td>Vercel</td><td>Browse targets → design and submit → live status → results</td></tr>
+            <tr><td>opencode-agent</td><td>AI agent</td><td>Runs the design→results loop, or hunts bugs, over MCP</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Two agent modes, and CI that runs both</h3>
+        <ul>
+          <li><strong>demo</strong> — the agent designs a binder and drives the full loop end to end.</li>
+          <li><strong>evaluate</strong> — the agent acts as an AI beta tester: it attempts the real task and
+              judges how well the API works for an agent. Are the tools and parameters clear, are the errors
+              descriptive, did anything block it? It ends with <code>VERDICT: PASS</code> or <code>FAIL</code>,
+              and CI only fails the check on <code>FAIL</code>.</li>
+          <li>Three workflows, all posting sticky PR comments: unit tests plus an image pushed to GHCR, an AI
+              code review that posts a severity table and fails on "request changes", and the AI beta tester
+              that brings the stack up and lets an agent use it.</li>
+        </ul>
+        <p>
+          The MCP tool surface mirrors the vendor's own SDK, so an agent that knows the real API transfers
+          1:1 — the simulation is a rehearsal space, not a lookalike.
+        </p>
+      </div>
+
+      <aside class="case-aside">
+        <dl>
+          <div class="row"><dt>Stack</dt><dd>FastAPI · Postgres · Redis · arq · Next.js</dd></div>
+          <div class="row"><dt>Agent interface</dt><dd>MCP (6 tools)</dd></div>
+          <div class="row"><dt>Assays simulated</dt><dd>Affinity · expression · thermostability</dd></div>
+          <div class="row"><dt>Results</dt><dd>Mocked, deterministic per sequence</dd></div>
+          <div class="row"><dt>Local tests</dt><dd>pytest against throwaway SQLite</dd></div>
+          <div class="row"><dt>CI</dt><dd>Unit · AI code review · AI beta tester</dd></div>
+        </dl>
+      </aside>
+    </div>
+  </article>
+
+  <!-- ======================================================== meal planner -->
+  <article class="case" id="meal-planner">
+    <div class="case-head">
+      <span class="case-idx">04 / seasonal meal planner</span>
+      <h2>Meal planning that starts from the ingredients Switzerland actually has in winter</h2>
+      <p class="section-lede">
+        A small Flask application: enter age, sex, weight, height and activity level, and it calculates daily
+        caloric needs, then assembles balanced weekly meals from a curated seasonal-ingredient database —
+        with a consolidated shopping list and optional AI-generated images.
+      </p>
+    </div>
+
+    <div class="case-grid">
+      <div class="prose">
+        <h3>What it does</h3>
+        <ul>
+          <li>Personalised daily targets from the profile, not a fixed table.</li>
+          <li>Meals composed to hit protein, carbohydrate, vegetable and fat components, drawn from a Swiss
+              winter ingredient database and macro ranges.</li>
+          <li>A weekly schedule across however many days you ask for, plus one consolidated shopping list.</li>
+          <li>Optional images per meal through Hugging Face's FLUX.1-schnell; the token is supplied in the UI
+              or in the environment, and image generation simply turns off when there is none.</li>
+        </ul>
+
+        <h3>Why it is on this page</h3>
+        <p>
+          It is the least glamorous project here and the one I use every week. It is also the smallest
+          end-to-end slice of my day job: a service with a config surface, an external dependency that can be
+          absent without breaking the app, and a data model that has to be sane enough to produce a shopping
+          list a human will actually follow.
+        </p>
+      </div>
+
+      <aside class="case-aside">
+        <dl>
+          <div class="row"><dt>Stack</dt><dd>Python · Flask</dd></div>
+          <div class="row"><dt>Data</dt><dd>Swiss winter ingredients · macro ranges</dd></div>
+          <div class="row"><dt>AI images</dt><dd>FLUX.1-schnell via Hugging Face (optional)</dd></div>
+          <div class="row"><dt>Runs on</dt><dd>localhost:5000</dd></div>
+          <div class="row"><dt>Licence</dt><dd>MIT</dd></div>
+        </dl>
+      </aside>
+    </div>
+  </article>
+
+  <!-- ================================================== also on github -->
+  <section class="section" id="github">
+    <div class="section-head">
+      <p class="eyebrow">Also on GitHub</p>
+      <div>
+        <h2>The public repositories</h2>
+        <p class="section-lede">
+          Older work and side experiments, pinned on
+          <a href="https://github.com/Visn0" target="_blank" rel="me noopener">github.com/Visn0</a>.
+        </p>
+      </div>
+    </div>
+
+    <div class="work">
+      <a class="work-row" href="https://github.com/Visn0/goChess" target="_blank" rel="noopener">
+        <span class="work-idx">Go</span>
+        <div><h3>goChess</h3></div>
+        <div class="work-body"><p>A chess engine and server, the long-running attempt at a chess.com competitor.</p></div>
+      </a>
+      <a class="work-row" href="https://github.com/Visn0/NN_from_scratch" target="_blank" rel="noopener">
+        <span class="work-idx">C++</span>
+        <div><h3>NN_from_scratch</h3></div>
+        <div class="work-body"><p>A neural network written from scratch in C++ — backpropagation with nothing hidden behind a framework.</p></div>
+      </a>
+      <a class="work-row" href="https://github.com/Visn0/pathfinding-ui" target="_blank" rel="noopener">
+        <span class="work-idx">TS</span>
+        <div><h3>pathfinding-ui</h3></div>
+        <div class="work-body"><p>Path-finding and maze-generation algorithms you can watch run, with the search order visualised.</p></div>
+      </a>
+      <a class="work-row" href="https://github.com/Visn0/goBinance" target="_blank" rel="noopener">
+        <span class="work-idx">Go</span>
+        <div><h3>goBinance</h3></div>
+        <div class="work-body"><p>Learning Go by experimenting with triangular arbitrage across exchange order books.</p></div>
+      </a>
+      <a class="work-row" href="https://github.com/Visn0/UniversityHack" target="_blank" rel="noopener">
+        <span class="work-idx">Py</span>
+        <div><h3>UniversityHack</h3></div>
+        <div class="work-body"><p>The sales-prediction hackathon I reached the final of in 2021 — the notebooks and the model.</p></div>
+      </a>
+      <a class="work-row" href="https://github.com/Visn0/c19retro_z80" target="_blank" rel="noopener">
+        <span class="work-idx">ASM</span>
+        <div><h3>c19retro_z80</h3></div>
+        <div class="work-body"><p>An Amstrad project written in Z80 assembly for the 2020/21 automated-reasoning course.</p></div>
+      </a>
+    </div>
+  </section>
+
+  <section class="contact">
+    <div class="contact-grid">
+      <div>
+        <p class="eyebrow">Next</p>
+        <h2>Want the long version of any of these?</h2>
+        <p class="section-lede">LinkedIn is the fastest route. I can walk through the benchmarks, the architecture or the on-call stories.</p>
+        <div class="cta-row">
+          <a class="btn btn--primary" href="https://www.linkedin.com/in/anton-chernysh/" target="_blank" rel="me noopener">Message me on LinkedIn</a>
+          <a class="btn" href="presentation.html">The deck</a>
+          <a class="btn" href="resume.html">CV</a>
+        </div>
+      </div>
+      <ul class="contact-list">
+        <li><a href="https://github.com/Visn0" target="_blank" rel="me noopener"><span class="k">GitHub</span><span class="v">github.com/Visn0</span></a></li>
+        <li><a href="https://www.linkedin.com/in/anton-chernysh/" target="_blank" rel="me noopener"><span class="k">LinkedIn</span><span class="v">in/anton-chernysh</span></a></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="shell">
+    <span>Anton Chernysh Kornishuk · Zurich, Switzerland</span>
+    <span>© <span data-year>2026</span> · <a href="index.html">Home</a> · <a href="presentation.html">Deck</a> · <a href="resume.html">CV</a></span>
+  </div>
+</footer>
+
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>

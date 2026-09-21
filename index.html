@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anton Chernysh — Site Reliability Engineer, Zurich</title>
+<meta name="description" content="Site Reliability Engineer in Zurich. SLOs, error budgets, Kubernetes and infrastructure as code at DFINITY and Taurus; Rust/WebAssembly and Go side projects.">
+<meta name="author" content="Anton Chernysh Kornishuk">
+<link rel="canonical" href="https://visn0.github.io/portfolio/">
+
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Anton Chernysh — Site Reliability Engineer">
+<meta property="og:description" content="SLOs, error budgets, Kubernetes and infrastructure as code. Projects in Rust/WebAssembly, Go and Python.">
+<meta property="og:url" content="https://visn0.github.io/portfolio/">
+<meta property="og:image" content="https://visn0.github.io/portfolio/assets/img/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/fonts.css">
+<link rel="stylesheet" href="assets/css/site.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Anton Chernysh Kornishuk",
+  "alternateName": "Anton Chernysh",
+  "jobTitle": "Site Reliability Engineer",
+  "url": "https://visn0.github.io/portfolio/",
+  "address": { "@type": "PostalAddress", "addressLocality": "Zurich", "addressCountry": "CH" },
+  "sameAs": [
+    "https://github.com/Visn0",
+    "https://www.linkedin.com/in/anton-chernysh/"
+  ],
+  "worksFor": { "@type": "Organization", "name": "DFINITY" },
+  "alumniOf": ["Universitat Politècnica de Catalunya", "Universitat d'Alacant"],
+  "knowsAbout": ["Site reliability engineering", "Kubernetes", "Terraform", "Observability", "SLOs", "Go", "Rust", "Python"]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="shell">
+    <a class="brand" href="index.html">
+      Anton Chernysh <span class="brand-dot" aria-hidden="true">/</span>
+      <span class="brand-meta">SRE · Zurich</span>
+    </a>
+
+    <button class="icon-btn menu-btn" id="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+
+    <nav class="nav" id="primary-nav" data-open="false" aria-label="Primary">
+      <a href="index.html#work">Work</a>
+      <a href="index.html#experience">Experience</a>
+      <a href="projects.html">Projects</a>
+      <a href="presentation.html">Deck</a>
+      <a href="resume.html">CV</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+
+    <button class="icon-btn" id="theme-toggle" type="button" aria-label="Switch to light theme" title="Switch theme">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ------------------------------------------------------------------ hero -->
+  <section class="hero shell">
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow">Site Reliability Engineer · Zurich, Switzerland</p>
+        <h1>
+          Anton Chernysh
+          <span class="thin">I make production systems measurable — then keep them that way.</span>
+        </h1>
+        <p class="hero-lede">
+          Reliability engineering across decentralised compute, regulated financial infrastructure and
+          high-volume travel traffic. SLOs, error budgets and observability at DFINITY; Terraform,
+          Kubernetes and 24/7 on-call for crypto infrastructure at Taurus; a PHP-to-Go rewrite at
+          Webbeds that carried 6 billion requests a day at four times the throughput.
+        </p>
+        <p class="hero-quote">“If you cannot measure it, you cannot improve it.”</p>
+        <div class="cta-row">
+          <a class="btn btn--primary" href="resume.html">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 5h16v14H4zM8 9h8M8 13h5"/></svg>
+            Read the CV
+          </a>
+          <a class="btn" href="presentation.html">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 4h18v12H3zM8 20h8M12 16v4"/></svg>
+            Project deck
+          </a>
+          <a class="btn" href="https://www.linkedin.com/in/anton-chernysh/" target="_blank" rel="me noopener">LinkedIn</a>
+          <a class="btn" href="https://github.com/Visn0" target="_blank" rel="me noopener">GitHub</a>
+        </div>
+      </div>
+
+      <aside class="facts" aria-label="Profile summary">
+        <div class="facts-head">
+          <span class="mono">Profile</span>
+          <span class="status mono"><span class="status-dot" aria-hidden="true"></span>Zurich, CH</span>
+        </div>
+        <dl>
+          <div class="row"><dt>Now</dt><dd>Site Reliability Engineer, DFINITY</dd></div>
+          <div class="row"><dt>Focus</dt><dd>SLOs &amp; error budgets · Kubernetes · IaC · observability</dd></div>
+          <div class="row"><dt>Writes</dt><dd>Go · Python · Rust · TypeScript · SQL</dd></div>
+          <div class="row"><dt>Runs</dt><dd>AWS · GCP · Linux · GitHub Actions</dd></div>
+          <div class="row"><dt>Speaks</dt><dd>Ukrainian, Spanish (native) · English (proficient) · German (beginner)</dd></div>
+          <div class="row"><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/anton-chernysh/" target="_blank" rel="me noopener">in/anton-chernysh</a></dd></div>
+          <div class="row"><dt>Code</dt><dd><a href="https://github.com/Visn0" target="_blank" rel="me noopener">github.com/Visn0</a></dd></div>
+        </dl>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------------------ work -->
+  <section class="section shell" id="work">
+    <div class="section-head">
+      <p class="eyebrow">Selected work</p>
+      <div>
+        <h2>Things I built and had to keep alive</h2>
+        <p class="section-lede">
+          Production platforms at work, and the side projects where I try ideas out with nobody
+          depending on them. Every claim below is a number I measured.
+        </p>
+      </div>
+    </div>
+
+    <div class="feature reveal">
+      <div class="feature-grid">
+        <div class="feature-media">
+          <video controls preload="metadata" playsinline
+                 poster="assets/img/protein-structure-3d.jpg"
+                 aria-label="Screen recording: typing the P04637 accession into the analyser, the record loading from UniProt, the analysis running, and the 3D cartoon being drawn.">
+            <source src="assets/video/protein-analysis-demo.webm" type="video/webm">
+            <source src="assets/video/protein-analysis-demo.mp4" type="video/mp4">
+            Your browser cannot play this video. <a href="assets/video/protein-analysis-demo.mp4">Download it</a>.
+          </video>
+          <p class="caption">One lookup end to end: <code>P04637</code> typed in, fetched from UniProt, analysed in WebAssembly, drawn as a 3D cartoon. 26 s, no backend.</p>
+        </div>
+        <div class="feature-copy">
+          <p class="work-kicker">Featured · Rust → WebAssembly</p>
+          <h3>A protein analyser in Rust and WebAssembly</h3>
+          <p>
+            A protein analyser that runs entirely in the visitor's browser. Give it a sequence, a
+            UniProt accession or an Ensembl protein ID — or import a FASTA, GenBank, GFF3 or PDB file —
+            and you get composition, molecular weight, isoelectric point, a feature map, a hydropathy
+            profile, and an interactive 3D structure. Records are fetched live from public databases;
+            all the computing happens on your own CPU, compiled from Rust to WebAssembly.
+          </p>
+          <div class="stats">
+            <div class="stat"><span class="stat-k">Compute</span><span class="stat-v">Rust → WASM</span></div>
+            <div class="stat"><span class="stat-k">Backend</span><span class="stat-v">None</span></div>
+            <div class="stat"><span class="stat-k">Data</span><span class="stat-v">Live</span></div>
+            <div class="stat"><span class="stat-k">Deploy</span><span class="stat-v">One Worker</span></div>
+          </div>
+          <div class="tags">
+            <span class="tag">Rust</span><span class="tag">WebAssembly</span><span class="tag">TypeScript</span>
+            <span class="tag">Cloudflare Workers</span><span class="tag">Playwright</span>
+          </div>
+          <div class="work-links">
+            <a href="projects.html#protein">Read the write-up &rarr;</a>
+            <a href="presentation.html#4">See it in the deck</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="work reveal" style="margin-top: var(--sp-7)">
+      <a class="work-row" href="projects.html#kv-cache">
+        <span class="work-idx">01</span>
+        <div>
+          <p class="work-kicker">LLM inference · applied research</p>
+          <h3>TurboQuant — KV-cache compression for vLLM</h3>
+          <div class="tags"><span class="tag">vLLM</span><span class="tag">CUDA</span><span class="tag">Python</span><span class="tag">MoE</span></div>
+        </div>
+        <div class="work-body">
+          <p>
+            An implementation of TurboQuant (ICLR 2026, arXiv:2504.19874) wired into vLLM and benchmarked
+            on real hardware. Three-bit keys and two-bit values cut KV-cache memory by <strong>30.9 % per GPU</strong>
+            and doubled the maximum context to <strong>914,144 tokens</strong>, while decode throughput rose 3.1 % at
+            30k context instead of falling.
+          </p>
+          <span class="mono">Read the write-up &rarr;</span>
+        </div>
+      </a>
+
+      <a class="work-row" href="projects.html#cloud-lab">
+        <span class="work-idx">02</span>
+        <div>
+          <p class="work-kicker">Platform simulation · agents over MCP</p>
+          <h3>A cloud lab in docker compose</h3>
+          <div class="tags"><span class="tag">FastAPI</span><span class="tag">Postgres</span><span class="tag">Redis</span><span class="tag">Next.js</span><span class="tag">MCP</span></div>
+        </div>
+        <div class="work-body">
+          <p>
+            A self-contained simulation of a protein-design foundry API: browse targets, submit binder
+            sequences as an experiment, get a cost estimate, poll it through lab stages, pull structured
+            results. An AI agent drives the whole loop over MCP — and uses the same interface to hunt for
+            bugs in the service.
+          </p>
+          <span class="mono">Read the write-up &rarr;</span>
+        </div>
+      </a>
+
+      <a class="work-row" href="projects.html#meal-planner">
+        <span class="work-idx">03</span>
+        <div>
+          <p class="work-kicker">Web app · Python</p>
+          <h3>A meal planner that respects the season</h3>
+          <div class="tags"><span class="tag">Python</span><span class="tag">Flask</span><span class="tag">Hugging Face</span></div>
+        </div>
+        <div class="work-body">
+          <p>
+            Calculates daily caloric needs from a personal profile, then builds balanced weekly meal plans
+            from a curated database of Swiss winter ingredients, with a consolidated shopping list and
+            optional AI-generated meal images.
+          </p>
+          <span class="mono">Read the write-up &rarr;</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------------- experience -->
+  <section class="section shell" id="experience">
+    <div class="section-head">
+      <p class="eyebrow">Experience</p>
+      <div>
+        <h2>Six years in production</h2>
+        <p class="section-lede">
+          Reliability, platform and software engineering across Switzerland, Spain and Luxembourg —
+          from decentralised compute and regulated finance to travel traffic at billions of requests a day.
+        </p>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <article class="job reveal">
+        <div class="job-meta">
+          <span class="job-company">DFINITY</span>
+          <span class="job-dates">Jan 2026 – Present</span>
+          <span class="job-place">Zurich, CH</span>
+        </div>
+        <div>
+          <h4>Site Reliability Engineer</h4>
+          <ul>
+            <li>Built and scaled <strong>caffeine.ai</strong>, an AI-driven platform for deploying full-stack applications on a decentralised network.</li>
+            <li>Established monitoring, SLOs and error budgets, reducing <strong>MTTD by 30 %</strong> through enhanced observability; lead incident response via postmortems.</li>
+            <li>Managed cloud infrastructure with Pulumi and Kubernetes, cutting toil through automated code review, SRE agents and internal AI workflows — <strong>tickets down 60 %</strong>.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="job reveal">
+        <div class="job-meta">
+          <span class="job-company">Taurus SA</span>
+          <span class="job-dates">Jan 2025 – Dec 2025</span>
+          <span class="job-place">Zurich, CH</span>
+        </div>
+        <div>
+          <h4>Site Reliability Engineer</h4>
+          <ul>
+            <li>Managed infrastructure as code with Terraform, Kubernetes and Helmfiles on Linux systems.</li>
+            <li>Automated releases and load testing, with monitoring across the estate on the Datadog / Prometheus stack.</li>
+            <li>Provided <strong>24/7 on-call</strong> and incident triage for critical financial infrastructure, consistently meeting every SLA.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="job reveal">
+        <div class="job-meta">
+          <span class="job-company">Webbeds</span>
+          <span class="job-dates">Mar 2023 – Dec 2024</span>
+          <span class="job-place">Palma, ES</span>
+        </div>
+        <div>
+          <h4>Site Reliability Engineer</h4>
+          <ul>
+            <li>Refactored core services from PHP to Go — <strong>6 billion requests a day</strong> — reaching <strong>4× throughput</strong> through concurrency optimisation.</li>
+            <li>Built an AI-driven pre-caching system and scaled AWS / EKS infrastructure with Terraform and GitHub Actions.</li>
+            <li>Optimised capacity planning and hardened security with an MFA framework, mitigating fraudulent activity.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="job reveal">
+        <div class="job-meta">
+          <span class="job-company">Pulsar Systems</span>
+          <span class="job-dates">Jun 2022 – Jan 2023</span>
+          <span class="job-place">Luxembourg, LU</span>
+        </div>
+        <div>
+          <h4>Software Engineer</h4>
+          <ul>
+            <li>Developed cloud infrastructure and high-frequency applications, focused on low-latency performance.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="job reveal">
+        <div class="job-meta">
+          <span class="job-company">NAX Solutions</span>
+          <span class="job-dates">Sep 2021 – May 2022</span>
+          <span class="job-place">Alicante, ES</span>
+        </div>
+        <div>
+          <h4>Machine Learning Engineer</h4>
+          <ul>
+            <li>Introduced deep-learning models for crop prediction, reaching <strong>91 % accuracy</strong> in production estimates.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="job reveal">
+        <div class="job-meta">
+          <span class="job-company">FacePhi</span>
+          <span class="job-dates">Jan 2020 – Mar 2020</span>
+          <span class="job-place">Alicante, ES</span>
+        </div>
+        <div>
+          <h4>Machine Learning Engineer</h4>
+          <ul>
+            <li>Researched and implemented computer-vision techniques for facial-recognition systems.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+
+    <div class="cta-row no-print">
+      <a class="btn" href="resume.html">Full CV</a>
+      <a class="btn" href="https://www.linkedin.com/in/anton-chernysh/" target="_blank" rel="me noopener">LinkedIn profile</a>
+    </div>
+  </section>
+
+  <!-- ----------------------------------------------------------------- skills -->
+  <section class="section shell" id="skills">
+    <div class="section-head">
+      <p class="eyebrow">Toolkit</p>
+      <div><h2>What I work with</h2></div>
+    </div>
+    <div class="skills">
+      <div class="skill-group reveal">
+        <h4>Languages</h4>
+        <ul class="skill-list">
+          <li>Go</li><li>Python</li><li>Rust</li><li>C++</li><li>TypeScript</li><li>SQL</li><li>HTML / CSS</li>
+        </ul>
+      </div>
+      <div class="skill-group reveal">
+        <h4>Infrastructure</h4>
+        <ul class="skill-list">
+          <li>Linux</li><li>TCP/IP</li><li>Kubernetes (Helm, CDK8S)</li><li>Terraform</li><li>Pulumi</li>
+          <li>AWS</li><li>GCP</li><li>GitHub Actions</li>
+        </ul>
+      </div>
+      <div class="skill-group reveal">
+        <h4>Reliability</h4>
+        <ul class="skill-list">
+          <li>SLO design</li><li>Error budgets</li><li>Incident response &amp; postmortems</li>
+          <li>Datadog</li><li>Prometheus</li><li>Grafana</li><li>Load testing</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------- recognition -->
+  <section class="section shell" id="recognition">
+    <div class="section-head">
+      <p class="eyebrow">Recognition &amp; education</p>
+      <div><h2>Outside the day job</h2></div>
+    </div>
+
+    <div class="panel-grid">
+      <div>
+        <div class="entry reveal">
+          <div class="entry-head">
+            <h4>Stanford Ribonanza RNA Folding <span class="medal">· Kaggle Silver Medal</span></h4>
+            <span class="entry-when">Sep – Dec 2023</span>
+          </div>
+          <p>Ranked <strong>15th of 755 teams</strong> and awarded silver. Built a Transformer model in PyTorch to predict RNA structures from sequence and chemical-mapping data.</p>
+        </div>
+
+        <div class="entry reveal">
+          <div class="entry-head">
+            <h4>Competitive programming, mathematics &amp; economics</h4>
+            <span class="entry-when">2014 – 2021</span>
+          </div>
+          <p>
+            Finalist, UniversityHack 2021 (sales prediction) · 1st place, DesafioRobot 2016 and 2017 ·
+            1st place, local Mathematics Olympiad 2014 and 2016 · 4th place, Ukrainian Programming
+            Olympiad 2017.
+          </p>
+        </div>
+      </div>
+
+      <div>
+        <div class="entry reveal">
+          <div class="entry-head">
+            <h4>Master, Computational Engineering and Mathematics</h4>
+            <span class="entry-when">2021 – 2023</span>
+          </div>
+          <p>University of Catalonia (UPC), Spain.</p>
+        </div>
+        <div class="entry reveal">
+          <div class="entry-head">
+            <h4>Bachelor, Computer Engineering</h4>
+            <span class="entry-when">2017 – 2021</span>
+          </div>
+          <p>University of Alicante, Spain — High Academic Achievement group.</p>
+        </div>
+        <figure class="award-shot reveal" style="margin-top: var(--sp-5)">
+          <img src="assets/img/ribonanza-medal.jpg" alt="Kaggle certificate of achievement: Anton Chernysh, placed 15th of 755 teams in Stanford Ribonanza RNA Folding, competition silver medallist." loading="lazy" width="1600" height="987">
+          <figcaption>Kaggle certificate — placed 15th of 755 teams, silver medallist, awarded 8 December 2023.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------------ present -->
+  <section class="section shell" id="present">
+    <div class="section-head">
+      <p class="eyebrow">Present &amp; share</p>
+      <div>
+        <h2>The five-minute version</h2>
+        <p class="section-lede">
+          Two ways to get through this without reading: a recorded walkthrough of the featured project,
+          and a short deck covering the reliability work and all four projects.
+        </p>
+      </div>
+    </div>
+
+    <div class="panel-grid">
+      <div class="entry reveal" style="border-top:0">
+        <div class="entry-head"><h4>Watch — the analyser, 26 seconds</h4><span class="entry-when">screen recording</span></div>
+        <p>An identifier goes in, a UniProt record comes back, the analysis runs in WebAssembly and the structure is drawn. No cut, no backend.</p>
+        <div class="cta-row">
+          <a class="btn" href="assets/video/protein-analysis-demo.mp4">Open the recording</a>
+        </div>
+      </div>
+      <div class="entry reveal" style="border-top:0">
+        <div class="entry-head"><h4>Present — the project deck</h4><span class="entry-when">10 slides</span></div>
+        <p>What an SRE actually does all day, then a slide per project with the numbers, and the contact details on the last one. Arrow keys move; <span class="mono">N</span> shows the speaker notes.</p>
+        <div class="cta-row">
+          <a class="btn btn--primary" href="presentation.html">Open the deck</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------------ contact -->
+  <section class="contact shell" id="contact">
+    <div class="contact-grid">
+      <div>
+        <p class="eyebrow">Contact</p>
+        <h2>Open to reliability and platform conversations</h2>
+        <p class="section-lede">
+          Based in Zurich. The quickest route is a LinkedIn message — I read everything that is not a recruiter blast.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn--primary" href="https://www.linkedin.com/in/anton-chernysh/" target="_blank" rel="me noopener">Message me on LinkedIn</a>
+          <a class="btn" href="https://github.com/Visn0" target="_blank" rel="me noopener">GitHub</a>
+        </div>
+      </div>
+      <ul class="contact-list">
+        <li><a href="https://www.linkedin.com/in/anton-chernysh/" target="_blank" rel="me noopener"><span class="k">LinkedIn</span><span class="v">in/anton-chernysh</span></a></li>
+        <li><a href="https://github.com/Visn0" target="_blank" rel="me noopener"><span class="k">GitHub</span><span class="v">github.com/Visn0</span></a></li>
+        <li><a href="resume.html"><span class="k">CV</span><span class="v">resume.html</span></a></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="shell">
+    <span>Anton Chernysh Kornishuk · Zurich, Switzerland</span>
+    <span>© <span data-year>2026</span> · <a href="index.html#contact">Contact</a> · <a href="projects.html">Projects</a> · <a href="presentation.html">Deck</a></span>
+  </div>
+</footer>
+
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>
