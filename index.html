@@ -90,9 +90,6 @@
           Outside of work you'll find me at machine learning hackathons or digging into computational
           biology — I learn best by building.
         </p>
-        <p class="hero-bio hero-bio--close">
-          Open to conversations about infrastructure and applied ML in bioinformatics.
-        </p>
       </div>
     </div>
   </section>
@@ -337,28 +334,41 @@
           <img src="assets/img/competitions/competitive-programming.jpg" alt="A whiteboard covered in handwritten algorithm notes: a recursion tree for g(3,0,0), a grid search, and the C++ function being designed with a backtracking loop." width="1600" height="1160" loading="lazy">
         </figure>
       </article>
-      <article class="comp-row reveal">
+      <article class="comp-row comp-row--strip reveal">
         <div>
           <p class="comp-date">2016 – 2017<span> · Robotics</span></p>
           <h3>Desafío Robot · first place both years</h3>
-          <p>A robot through a speed run, a skill circuit and a sumo round. Learned: sensor calibration, control loops, and debugging hardware with the clock running.</p>
+          <p>A robot through a skill circuit, a speed run and a sumo round, after a season of line following. Learned: sensor calibration, control loops, and debugging hardware with the clock running.</p>
         </div>
         <figure class="comp-media">
-          <div class="video-pair">
-            <div class="video-facade" data-yt="OQghDClwiew" data-yt-title="Desafío Robot 2016, skill round">
-              <img src="assets/img/competitions/robot-challenge-1.jpg" alt="Preview of the Desafío Robot 2016 skill round" width="1280" height="720" loading="lazy">
-              <button class="video-play" type="button">skill round · 0:32</button>
-            </div>
-            <div class="video-facade" data-yt="-akr7WYO4GA" data-yt-title="Desafío Robot 2016, speed run">
-              <img src="assets/img/competitions/robot-challenge-2.jpg" alt="Preview of the Desafío Robot 2016 speed run" width="1280" height="720" loading="lazy">
-              <button class="video-play" type="button">speed run · 2:19</button>
-            </div>
-            <video controls preload="metadata" playsinline poster="assets/img/competitions/robot-sumo-poster.jpg"
-                   aria-label="The sumo round: two robots in the ring, one pushed out.">
-              <source src="assets/video/desafio-robot-sumo.webm" type="video/webm">
-              <source src="assets/video/desafio-robot-sumo.mp4" type="video/mp4">
-              Your browser cannot play this video. <a href="assets/video/desafio-robot-sumo.mp4">Download it</a>.
-            </video>
+          <div class="media-strip">
+            <figure class="media-item">
+              <div class="video-facade" data-yt="OQghDClwiew" data-yt-title="Desafío Robot 2016, skill round">
+                <img src="assets/img/competitions/robot-challenge-1.jpg" alt="Preview of the Desafío Robot 2016 skill round" width="1280" height="720" loading="lazy">
+                <button class="video-play" type="button" aria-label="Play the skill round, 32 seconds"></button>
+              </div>
+              <figcaption>skill round · 0:32</figcaption>
+            </figure>
+            <figure class="media-item">
+              <div class="video-facade" data-yt="-akr7WYO4GA" data-yt-title="Desafío Robot 2016, speed run">
+                <img src="assets/img/competitions/robot-challenge-2.jpg" alt="Preview of the Desafío Robot 2016 speed run" width="1280" height="720" loading="lazy">
+                <button class="video-play" type="button" aria-label="Play the speed run, 2 minutes 19"></button>
+              </div>
+              <figcaption>speed run · 2:19</figcaption>
+            </figure>
+            <figure class="media-item">
+              <video controls preload="metadata" playsinline poster="assets/img/competitions/robot-sumo-poster.jpg"
+                     aria-label="The sumo round: two robots in the ring, one pushed out.">
+                <source src="assets/video/desafio-robot-sumo.webm" type="video/webm">
+                <source src="assets/video/desafio-robot-sumo.mp4" type="video/mp4">
+                Your browser cannot play this video. <a href="assets/video/desafio-robot-sumo.mp4">Download it</a>.
+              </video>
+              <figcaption>sumo round</figcaption>
+            </figure>
+            <figure class="media-item">
+              <img src="assets/img/competitions/robot-line-follower.png" alt="The line follower: a homemade robot with its sensor board sitting over the black line, competition tag 450 for IES 1 Torrevieja Libertas." width="359" height="253" loading="lazy">
+              <figcaption>line follower</figcaption>
+            </figure>
           </div>
         </figure>
       </article>
@@ -390,7 +400,7 @@
         </div>
       </article>
 
-      <article class="job reveal">
+      <article class="job job--media reveal">
         <div class="job-meta">
           <span class="job-company">University of Alicante</span>
           <span class="job-dates">2017 – 2021</span>
@@ -400,6 +410,15 @@
           <h4>Bachelor, Computer Engineering</h4>
           <p>High Academic Achievement group.</p>
         </div>
+        <figure class="job-media">
+          <video controls preload="metadata" playsinline poster="assets/img/humanoid-robot-poster.jpg"
+                 aria-label="A humanoid robot walking across the floor.">
+            <source src="assets/video/humanoid-robot.webm" type="video/webm">
+            <source src="assets/video/humanoid-robot.mp4" type="video/mp4">
+            Your browser cannot play this video. <a href="assets/video/humanoid-robot.mp4">Download it</a>.
+          </video>
+          <figcaption>Humanoid robot</figcaption>
+        </figure>
       </article>
     </div>
   </section>
@@ -435,18 +454,10 @@
 
   <!-- ---------------------------------------------------------- contact -->
   <section class="contact shell" id="contact">
-    <div class="contact-grid">
-      <div>
-        <h2 class="eyebrow">Contact</h2>
-        <div class="cta-row">
-          <a class="btn btn--linkedin" href="https://www.linkedin.com/in/anton-chernysh/" target="_blank" rel="me noopener">Message me on LinkedIn</a>
-          <a class="btn btn--github" href="https://github.com/Visn0" target="_blank" rel="me noopener">GitHub</a>
-        </div>
-      </div>
-      <ul class="contact-list">
-        <li><a href="https://www.linkedin.com/in/anton-chernysh/" target="_blank" rel="me noopener"><span class="k">LinkedIn</span><span class="v">in/anton-chernysh</span></a></li>
-        <li><a href="https://github.com/Visn0" target="_blank" rel="me noopener"><span class="k">GitHub</span><span class="v">github.com/Visn0</span></a></li>
-      </ul>
+    <h2 class="eyebrow">Contact</h2>
+    <div class="cta-row">
+      <a class="btn btn--linkedin" href="https://www.linkedin.com/in/anton-chernysh/" target="_blank" rel="me noopener">LinkedIn</a>
+      <a class="btn btn--github" href="https://github.com/Visn0" target="_blank" rel="me noopener">GitHub</a>
     </div>
   </section>
 </main>

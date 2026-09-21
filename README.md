@@ -20,8 +20,8 @@ assets/css/site.css      the whole design system — tokens, layout, print style
 assets/css/fonts.css     @font-face rules for the fonts below
 assets/fonts/*.woff2     Space Grotesk, Inter, JetBrains Mono (OFL), self-hosted
 assets/js/site.js        theme toggle, mobile nav, scroll reveal, carousel, image lightbox, video facades
-assets/img/              favicon, social card, project stills, Kaggle certificate
-assets/video/            the featured project walkthrough and the sumo round (mp4 + webm)
+assets/img/              favicon, social card, project stills, competition evidence
+assets/video/            the featured project walkthrough, the sumo round and the humanoid robot (mp4 + webm)
 ```
 
 There is deliberately no analytics, no tracker and no runtime dependency on a third-party host.
@@ -35,7 +35,9 @@ There is deliberately no analytics, no tracker and no runtime dependency on a th
 - **No CV page or deck is published**: the CV goes out on request as a PDF, and the site has no
   page for it.
 - **The demo video** is a screen recording of the deployed protein analyser; it is copied here
-  rather than embedded from another host so the page has no third-party request.
+  rather than embedded from another host so the page has no third-party request. The competition
+  clips are self-hosted for the same reason; only the two 2016 YouTube rounds are facades, and
+  nothing is fetched from YouTube until the play button is pressed.
 
 ## Deploying
 
