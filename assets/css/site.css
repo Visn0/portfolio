@@ -261,7 +261,6 @@ img, video, svg { max-width: 100%; height: auto; display: block; }
 }
 .card-media img, .card-media video { width: 100%; height: 100%; object-fit: cover; display: block; }
 .card-media--video video { object-fit: contain; }
-.card-media--contain { aspect-ratio: 1 / 1; }
 .card-media--contain img { object-fit: contain; image-rendering: pixelated; }
 .card-date { color: var(--ink-faint); }
 .carousel-nav { display: flex; align-items: center; gap: var(--sp-3); margin-top: var(--sp-4); }
@@ -394,6 +393,21 @@ figcaption { font-family: var(--font-mono); font-size: var(--step--1); color: va
 .stills { display: grid; gap: var(--sp-4); grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); margin-block: var(--sp-5); }
 .stills img { border: 1px solid var(--line); border-radius: var(--radius); }
 
+/* click-to-enlarge: JS wraps each content image in a real <button>, so the
+   affordance exists for keyboard and screen readers, not only for a cursor */
+.zoom-trigger {
+  display: block; width: 100%; height: auto; padding: 0; margin: 0;
+  border: 0; background: none; color: inherit; cursor: zoom-in;
+  -webkit-tap-highlight-color: transparent;
+}
+.portrait .zoom-trigger, .card-media .zoom-trigger { height: 100%; }
+.zoom-trigger img { transition: transform 0.3s ease; }
+@media (hover: hover) { .zoom-trigger:hover img { transform: scale(1.02); } }
+@media (prefers-reduced-motion: reduce) {
+  .zoom-trigger img { transition: none; }
+  .zoom-trigger:hover img { transform: none; }
+}
+
 .table { display: block; overflow-x: auto; max-width: 100%; width: 100%; border-collapse: collapse; font-family: var(--font-mono); font-size: var(--step--1); margin-bottom: var(--sp-5); }
 .table caption { text-align: left; font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink-faint); padding-bottom: var(--sp-2); }
 .table th, .table td { text-align: left; padding: var(--sp-2) var(--sp-3); border-bottom: 1px solid var(--line); }
@@ -469,12 +483,42 @@ figcaption { font-family: var(--font-mono); font-size: var(--step--1); color: va
   .js .reveal, .js .reveal.is-in { opacity: 1; transform: none; transition: none; }
 }
 
+/* ------------------------------------------------------------- lightbox */
+/* The overlay the zoom triggers open into. Fixed and last in the body, so it
+   sits above the sticky header; scroll is locked while it is up. */
+
+html.lightbox-open, body.lightbox-open { overflow: hidden; }
+
+.lightbox {
+  position: fixed; inset: 0; z-index: 90;
+  display: grid; place-items: center;
+  padding: clamp(1rem, 4vw, 3rem);
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  cursor: zoom-out;
+}
+.lightbox[hidden] { display: none; }
+.lightbox img {
+  max-width: 100%; max-height: 86vh; width: auto; height: auto;
+  border: 1px solid var(--line-strong); border-radius: var(--radius);
+  background: var(--bg-elev); box-shadow: var(--shadow);
+}
+.lightbox-close {
+  position: absolute; top: clamp(1rem, 3vw, 2rem); right: clamp(1rem, 3vw, 2rem);
+  width: 2.75rem; height: 2.75rem; display: grid; place-items: center;
+  padding: 0; cursor: pointer; color: var(--ink);
+  border: 1px solid var(--line-strong); border-radius: var(--radius);
+  background: var(--bg-elev);
+}
+.lightbox-close:hover { color: var(--ink); border-color: var(--ink-faint); background: var(--bg-elev-2); }
+.lightbox-close svg { width: 1.1rem; height: 1.1rem; }
+
 /* ------------------------------------------------------------------ print */
 
 @media print {
   :root { --bg: #ffffff; --bg-elev: #ffffff; --bg-elev-2: #ffffff; --ink: #101114; --ink-dim: #33373d; --ink-faint: #5b6069; --line: #d8d8d4; --accent: #000000; }
   body { font-size: 10.5pt; line-height: 1.4; }
-  .site-header, .site-footer, .no-print, .cta-row { display: none !important; }
+  .site-header, .site-footer, .no-print, .cta-row, .lightbox { display: none !important; }
   .js .reveal, .js .reveal.is-in { opacity: 1 !important; transform: none !important; transition: none !important; }
   .shell { max-width: none; padding: 0; }
   .section, .job, .case { border-color: #d8d8d4; }
