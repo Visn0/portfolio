@@ -9,10 +9,8 @@ Live: <https://visn0.github.io/portfolio/>
 
 | File | What it is |
 | --- | --- |
-| `index.html` | Home — hero, profile panel, selected work (with the recorded demo), experience ledger, toolkit, recognition, education, contact |
+| `index.html` | Home — hero, projects carousel, experience ledger, competitions, education, toolkit, contact |
 | `projects.html` | Seven repository write-ups (Rust/WebAssembly protein analyser, Chess, path-finding visualiser, goBinance, UniversityHack, Cell Block, NN from scratch), each with its last-commit date and media. |
-| `presentation.html` | Ten-slide deck about the reliability practice and the projects. Arrow keys navigate, `N` toggles speaker notes, `F` fullscreen, `P` print |
-| `resume.html` | The CV data as a print-ready page — `Ctrl/Cmd + P` gives a two-page A4 PDF |
 | `404.html` | Not-found page |
 
 ## Structure
@@ -21,7 +19,7 @@ Live: <https://visn0.github.io/portfolio/>
 assets/css/site.css      the whole design system — tokens, layout, print styles
 assets/css/fonts.css     @font-face rules for the fonts below
 assets/fonts/*.woff2     Space Grotesk, Inter, JetBrains Mono (OFL), self-hosted
-assets/js/site.js        theme toggle, mobile nav, scroll reveal, deck, copy-email
+assets/js/site.js        theme toggle, mobile nav, scroll reveal, carousel, video facades
 assets/img/              favicon, social card, project stills, Kaggle certificate
 assets/video/            the featured project walkthrough (mp4 + webm)
 ```
@@ -34,9 +32,8 @@ There is deliberately no analytics, no tracker and no runtime dependency on a th
   The light palette is the `[data-theme="light"]` block; the dark palette is the default.
 - **Content**: hand-written HTML. Each page repeats the header and footer — there is no templating,
   on purpose, so the site works from the filesystem as well as from Pages.
-- **The CV as a PDF** comes from `resume.html`: open it in a browser and print to PDF with the default
-  (CSS page size) settings. No PDF is committed — the page holds the data, and it stays current because
-  there is only one copy of it.
+- **No CV page or deck is published**: the CV goes out on request as a PDF, and the site has no
+  page for it.
 - **The demo video** is a screen recording of the deployed protein analyser; it is copied here
   rather than embedded from another host so the page has no third-party request.
 
