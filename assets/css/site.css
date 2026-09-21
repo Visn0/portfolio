@@ -346,20 +346,9 @@ img, video, svg { max-width: 100%; height: auto; display: block; }
 .skill-list li { font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink-dim); border-bottom: 1px dashed var(--line); padding-bottom: var(--sp-2); }
 .skill-list li:last-child { border-bottom: 0; }
 
-/* awards / education lists */
-.panel-grid { display: grid; gap: var(--sp-6); }
-@media (min-width: 60rem) { .panel-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-7); } }
-.entry { padding-block: var(--sp-3); border-top: 1px solid var(--line); }
-.entry:first-of-type { border-top: 0; }
-.entry-head { display: flex; flex-wrap: wrap; gap: var(--sp-2) var(--sp-4); align-items: baseline; justify-content: space-between; }
-.entry h4 { font-size: var(--step-1); }
-.entry .entry-when { font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink-faint); white-space: nowrap; }
-.entry p { color: var(--ink-dim); margin-top: var(--sp-2); }
-.medal { color: var(--accent); font-family: var(--font-mono); font-size: var(--step--1); }
 
 figure { margin: 0; }
 figcaption { font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink-faint); padding-top: var(--sp-3); }
-.award-shot { border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--bg-elev); padding: var(--sp-3); }
 
 /* content page (projects.html, resume.html) */
 .prose { max-width: 46rem; }
@@ -394,7 +383,7 @@ figcaption { font-family: var(--font-mono); font-size: var(--step--1); color: va
 .case .tags { margin-bottom: var(--sp-2); }
 .case-grid { display: grid; gap: var(--sp-6); }
 /* wide intrinsics (ascii diagrams, tables) must never widen the grid column */
-.case-grid > *, .panel-grid > *, .section-head > *, .skills > * { min-width: 0; }
+.case-grid > *, .section-head > *, .skills > * { min-width: 0; }
 @media (min-width: 62rem) { .case-grid { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: var(--sp-7); align-items: start; } }
 .case-aside { border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--bg-elev); padding: var(--sp-4); position: sticky; top: 5rem; }
 .case-aside dl { margin: 0; }
