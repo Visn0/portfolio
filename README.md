@@ -21,7 +21,7 @@ assets/css/fonts.css     @font-face rules for the fonts below
 assets/fonts/*.woff2     Space Grotesk, Inter, JetBrains Mono (OFL), self-hosted
 assets/js/site.js        theme toggle, mobile nav, scroll reveal, carousel, image lightbox, video facades
 assets/img/              favicon, social card, project stills, Kaggle certificate
-assets/video/            the featured project walkthrough (mp4 + webm)
+assets/video/            the featured project walkthrough and the sumo round (mp4 + webm)
 ```
 
 There is deliberately no analytics, no tracker and no runtime dependency on a third-party host.
