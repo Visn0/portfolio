@@ -10,7 +10,6 @@ Live: <https://visn0.github.io/portfolio/>
 | File | What it is |
 | --- | --- |
 | `index.html` | Home — hero, projects carousel, experience ledger, competitions, education, toolkit, contact |
-| `projects.html` | Seven repository write-ups (Rust/WebAssembly protein analyser, Chess, path-finding visualiser, goBinance, UniversityHack, Cell Block, NN from scratch), each with its last-commit date and media. |
 | `404.html` | Not-found page |
 
 ## Structure
@@ -23,21 +22,6 @@ assets/js/site.js        theme toggle, mobile nav, scroll reveal, carousel, imag
 assets/img/              favicon, social card, project stills, competition evidence
 assets/video/            the featured project walkthrough, the sumo round and the humanoid robot (mp4 + webm)
 ```
-
-There is deliberately no analytics, no tracker and no runtime dependency on a third-party host.
-
-## Editing
-
-- **Colours and type**: everything is a CSS custom property at the top of `assets/css/site.css`.
-  The light palette is the `[data-theme="light"]` block; the dark palette is the default.
-- **Content**: hand-written HTML. Each page repeats the header and footer — there is no templating,
-  on purpose, so the site works from the filesystem as well as from Pages.
-- **No CV page or deck is published**: the CV goes out on request as a PDF, and the site has no
-  page for it.
-- **The demo video** is a screen recording of the deployed protein analyser; it is copied here
-  rather than embedded from another host so the page has no third-party request. The competition
-  clips are self-hosted for the same reason; only the two 2016 YouTube rounds are facades, and
-  nothing is fetched from YouTube until the play button is pressed.
 
 ## Deploying
 
