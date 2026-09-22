@@ -31,6 +31,12 @@ GitHub Pages. Pages must be enabled with **Settings → Pages → Source: GitHub
 
 No secrets are required.
 
+## Analytics
+
+Cloudflare Web Analytics in both pages: a cookieless beacon, no consent banner, no personal data.
+It counts page views and real-user Core Web Vitals; there are no custom events. Dashboard:
+Cloudflare → Web Analytics → `visn0.github.io`. The site token in the markup is public by design.
+
 ## Licence
 
 Content © Anton Chernysh Kornishuk. The webfonts are under the SIL Open Font Licence.
