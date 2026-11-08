@@ -115,6 +115,43 @@
     sync();
   }
 
+  /* -------------------------------------------------------------- gallery */
+  /* One photo or video at a time, with prev/next arrows and arrow keys. */
+  document.querySelectorAll("[data-gallery]").forEach(function (gallery) {
+    var slides = gallery.querySelectorAll(".gallery-slide");
+    var prev = gallery.querySelector(".gallery-prev");
+    var next = gallery.querySelector(".gallery-next");
+    if (slides.length < 2) {
+      if (prev) { prev.hidden = true; }
+      if (next) { next.hidden = true; }
+      return;
+    }
+    var current = 0;
+    function show(index) {
+      current = (index + slides.length) % slides.length;
+      slides.forEach(function (slide, i) {
+        var on = i === current;
+        slide.classList.toggle("is-active", on);
+        slide.setAttribute("aria-hidden", on ? "false" : "true");
+        /* a hidden video keeps playing its sound unless it is paused */
+        if (!on) {
+          slide.querySelectorAll("video").forEach(function (v) { v.pause(); });
+          /* reloading a YouTube embed without autoplay is the only way to stop it from outside */
+          slide.querySelectorAll("iframe[src*=\"autoplay=1\"]").forEach(function (f) { f.src = f.src.replace("autoplay=1", "autoplay=0"); });
+        }
+      });
+    }
+    if (prev) { prev.addEventListener("click", function () { show(current - 1); }); }
+    if (next) { next.addEventListener("click", function () { show(current + 1); }); }
+    gallery.addEventListener("keydown", function (e) {
+      /* keep the arrows for the video's own seek bar when it has focus */
+      if (e.target.tagName === "VIDEO") { return; }
+      if (e.key === "ArrowLeft") { e.preventDefault(); e.stopPropagation(); show(current - 1); }
+      else if (e.key === "ArrowRight") { e.preventDefault(); e.stopPropagation(); show(current + 1); }
+    });
+    show(0);
+  });
+
   /* ------------------------------------------------------------ video cue */
   document.querySelectorAll("video[data-poster-play]").forEach(function (vid) {
     vid.addEventListener("click", function () {
@@ -141,7 +178,7 @@
   /* Every content image opens enlarged in a dialog of its own. Wrapped in a
      real <button> so the affordance is focusable, not just clickable. */
   function initLightbox() {
-    var SELECTOR = ".portrait img, .card-media img, .stills img, .comp-media img";
+    var SELECTOR = ".portrait img, .card-media img, .gallery-slide img, .stills img, .comp-media img";
     var sources = Array.prototype.slice.call(document.querySelectorAll(SELECTOR)).filter(function (img) {
       /* the YouTube facades are click-to-play: leave their posters alone */
       return !img.closest("[data-yt], a, button");
